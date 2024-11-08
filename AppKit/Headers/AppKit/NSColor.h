@@ -25,23 +25,23 @@
 @class NSPasteboard;
 
 
-struct Gray_Color {
+static struct Gray_Color {
 	float white;
 } gray;
 
-struct RGB_Color {
+static struct RGB_Color {
 	float red;
 	float green;
 	float blue;
 } rgb;
 
-struct HSB_Color {
+static struct HSB_Color {
 	float hue;
 	float saturation;
 	float brightness;
 } hsb;
 
-struct CMYK_Color {
+static struct CMYK_Color {
 	float cyan;
 	float magenta;
 	float yellow;
