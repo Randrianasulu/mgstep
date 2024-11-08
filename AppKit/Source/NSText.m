@@ -234,7 +234,7 @@ typedef enum
 		[self setSelectionParagraphGranularitySet:c];
 
 		_minSize = (NSSize){5, 15};
-		_maxSize = (NSSize){HUGE,HUGE};
+		_maxSize = (NSSize){HUGE_VAL,HUGE_VAL};
 
 		[self setString:@""];
 		[self setSelectedRange:NSMakeRange(0,0)];
@@ -2417,7 +2417,7 @@ _RelocateLayoutArray( NSMutableArray *lineLayoutInformation,
 					{
 					if(isBuckled)
 						{
-						NSSize currentSize = NSMakeSize(HUGE,0);
+						NSSize currentSize = NSMakeSize(HUGE_VAL,0);
 						unsigned lastVisibleCharIndex = startingLineCharIndex 
 												+ currentStringRange.length;
 
