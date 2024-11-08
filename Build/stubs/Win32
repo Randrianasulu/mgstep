@@ -1,0 +1,99 @@
+#
+#   Windows NT
+#
+#   Configure to build mgstep libraries on Windows NT i386.
+#
+#	Author:	Felipe A. Rodriguez <farz@mindspring.com>
+#	Date:	January 1999
+#
+LIBS := $(LIBS) -lfoundation -lcygwin -lobjc
+CFLAGS := -g -O2 -Wno-import $(CFLAGS) 
+BUNDLE_CFLAGS := $(BUNDLE_CFLAGS) $(CFLAGS)
+
+#
+#   Library name and lib build commands 
+#
+SHARED_LIB_SUFFIX = .dll
+STATIC_LIB_SUFFIX = .a
+LIB_CFLAGS := $(LIB_CFLAGS) 
+
+# Library names
+#SHARED_LIB = $(LIBRARY)$(SHARED_LIB_SUFFIX)
+STATIC_LIB = $(LIBRARY)$(STATIC_LIB_SUFFIX)
+
+# Library build commands
+#BUILD_SHARED_LIB = cd $(TOP)/../Foundation/Source; $(MAKE) $(LIBRARY).dll
+BUILD_STATIC_LIB = $(AR) rc $(STATIC_LIB)
+
+#
+#   System paths 
+#
+# Fill in your path to libcygwin.a here (with no trailing slash)***
+LIBPATH=/cygnus/cygwin-b20/H-i586-cygwin32/i586-cygwin32/lib
+GCCPATH=/cygnus/cygwin-b20/H-i586-cygwin32/lib/gcc-lib/i586-cygwin32/egcs-2.91.57
+LIB_OBJC_PATH=$(GCCPATH)/libobjc.a
+#LIB_OBJC_PATH=/objc/obj/libobjc.a
+STD_OBJS = $(LIB_OBJC_PATH) init.o fixup.o $(LIBPATH)/libcygwin.a $(GCCPATH)/libgcc.a $(LIBPATH)/libc.a  $(LIBPATH)/libcygwin.a $(LIBPATH)/libiberty.a $(LIBPATH)/libkernel32.a $(LIBPATH)/libadvapi32.a
+
+#
+#   Create static lib
+#
+$(LIBRARY).a:: $(OBJS)
+
+#
+#   Create a relocatable DLL
+#
+$(LIBRARY).dll:: $(LIBRARY).def
+	cd obj_i386; ld --base-file $(LIBRARY).base --dll -o $(LIBRARY).dll $(OBJS) $(STD_OBJS) -e _dll_entry@12 
+	cd obj_i386; dlltool --as=as --dllname $(LIBRARY).dll --def $(LIBRARY).def --base-file $(LIBRARY).base --output-exp $(LIBRARY).exp 
+	cd obj_i386; ld --base-file $(LIBRARY).base $(LIBRARY).exp --dll -o $(LIBRARY).dll $(OBJS) $(STD_OBJS) -e _dll_entry@12 
+	cd obj_i386; dlltool --as=as --dllname $(LIBRARY).dll --def $(LIBRARY).def --base-file $(LIBRARY).base --output-exp $(LIBRARY).exp
+	cd obj_i386; ld $(LIBRARY).exp --dll -o $(LIBRARY).dll $(OBJS) $(STD_OBJS) -e _dll_entry@12 
+#   Build the stub lib with which programs will link:
+	cd obj_i386; dlltool --as=as --dllname $(LIBRARY).dll --def $(LIBRARY).def --output-lib $(LIBRARY).a
+
+
+#
+#   Make DLL .def file
+#
+$(LIBRARY).def:: $(OBJS)
+	@(echo "#")
+	@(echo "#  building $(LIBRARY) for Windows NT")
+	@(echo "#")
+	cd obj_i386; echo LIBRARY $(LIBRARY) > $(LIBRARY).def;	
+	cd obj_i386; echo EXPORTS >> $(LIBRARY).def;	
+#	cd obj_i386; nm $(OBJS) | grep '^........ [T] _' | sed 's/[^_]*_//' | grep -v "_GLOBAL_" >> $(LIBRARY).def
+#	cd obj_i386; nm $(OBJS) | grep '^........ [T] _' | sed 's/[^_]*_//'| awk -F '.' '{print $$1}' | sed 's/_G/G/' >> $(LIBRARY).def
+#	cd obj_i386; nm $(OBJS) | grep '^........ [T] _' | sed 's/[^_]*_//'| awk -F '.' '{print $$1}' >> $(LIBRARY).def
+#	cd obj_i386; nm $(OBJS) | sed -n '/^........ [BCDRT] _/s/[^_]*_//p' | awk -F '.' '{print $$1}' >> $(LIBRARY).def
+	cd obj_i386; nm $(OBJS) | sed -n '/^........ [BCDRT] _/s/[^_]*_//p' | grep -v "_GLOBAL_" >> $(LIBRARY).def
+	cd obj_i386; echo "$(INIT_CC_H)" > init.cc;
+	cd obj_i386; echo "$(INIT_CC)" >> init.cc;
+	cd obj_i386; $(CC) $(LIB_CFLAGS) -c init.cc;
+	cd obj_i386; echo "$(FIXUP_C)" > fixup.c;
+	cd obj_i386; $(CC) $(LIB_CFLAGS) -c fixup.c;
+
+#
+#   Create DLL entry routine file
+#
+INIT_CC_H = "\#include \<windows.h\>"
+INIT_CC = "extern \"C\" \{ int WINAPI dll_entry \(HANDLE h\, DWORD reason\, void *ptr \)\; \}\; \
+int WINAPI dll_entry \(HANDLE , DWORD reason, void *\) \{ switch \(reason\)\
+    \{\
+    case DLL_PROCESS_ATTACH:\
+      break\;\
+    case DLL_PROCESS_DETACH:\
+      break\;\
+    case DLL_THREAD_ATTACH:\
+      break\;\
+    case DLL_THREAD_DETACH:\
+      break\;\
+    \}\
+  return 1\; \}"
+
+#
+#   Create DLL import termination file
+#
+#   Copied from winsup/dcrt0.cc in the cygwin32 source distribution.
+#
+FIXUP_C = "asm\(\".section .idata$$\3\\n\" \".long 0,0,0,0,0,0,0,0\"\)\;"

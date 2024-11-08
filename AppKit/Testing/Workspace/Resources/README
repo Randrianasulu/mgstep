@@ -1,0 +1,10 @@
+The enclosed icons and defaults database file greatly enhance the mGSTEP
+AppKit's Workspace example.  Many of the icons are old and mangled to avoid
+any copyright questions.  Marco van Hylckama Vlieg created most of the others.
+
+The defaults database file is placed at: $HOME/.mGSTEP/.defaults  during the
+installation of mGSTEP.
+
+
+
+FAR

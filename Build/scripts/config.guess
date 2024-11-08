@@ -1,0 +1,403 @@
+#!/bin/sh
+#
+#   Generate mGSTEP configuration file (.config).
+#
+#	Author:	Felipe A. Rodriguez <far@illumenos.com>
+#	Date:	October 2009
+#
+###############################################################################
+
+UNAME_MACHINE=`(uname -m) 2>/dev/null`
+UNAME_SYSTEM=`(uname -s) 2>/dev/null`
+
+NEW_CF=${CONFIG}-tmp
+
+machine=""
+os="generic"
+
+	case "${UNAME_MACHINE}" in
+		 arm32) 	machine=arm ;;
+		*Macintosh)	machine=ppc ;;
+		i*86)		machine=i386 ;;
+		amd64)      machine=x86_64;;
+		x86*64)		machine=x86_64;;
+		ppc)		machine=ppc
+	esac
+
+	case "${UNAME_SYSTEM}" in
+	    Linux)		os=Linux-${machine} ;;
+	    Darwin)		os=MacOSX ;;
+	    Freebsd)	os=FreeBSD3 ;;
+	    OpenBSD)	os=OpenBSD ;;
+	    Win32)		os=Win32 ;;
+	    AIX)		os=AIX-5.1 
+				machine=ppc ;;
+	    SunOS)		os=SunOS-5.9 
+				machine=sparc ;;
+	esac
+
+	echo "##";
+	echo '##  mGSTEP' ${VERSION} ' Configure detected: ' ${os}
+	echo "##";
+
+	if [ "${os}" = "generic" ] || [ ! -f ./Build/stubs/${os} ]; then
+		echo "#" ;
+		echo "#  WARNING:  A supported build target was not detected.  ";
+		echo "#  Build target configuration files exist in Build/stubs";
+		echo "#  for (Linux, MacOSX, OpenBSD, AIX, Solaris and Win2k).";
+		echo "#  You must generate an appropriate build config file to";
+		echo "#  avoid using generic build options on this platform.";
+		echo "#" ;
+		os="generic"
+	fi
+
+	echo "";
+
+
+	echo '#' > ${NEW_CF};
+	echo '#   mGSTEP configuration file' >> ${NEW_CF};
+	echo '#' >> ${NEW_CF};
+	echo '#   mGSTEP' ${VERSION} ' Configure detected: ' ${os} >> ${NEW_CF};
+	echo '#' >> ${NEW_CF};
+
+	echo '' >> ${NEW_CF};
+	echo 'MACHINE='${machine} >> ${NEW_CF};
+	echo 'OS='${os} >> ${NEW_CF};
+	echo '' >> ${NEW_CF};
+
+	if [ "${os}" = "MacOSX" ]; then
+		echo '##  Generating configuration file: (.config)'
+		mv ${NEW_CF} ${CONFIG}
+		return;
+	fi
+
+	/bin/echo -n 'AppKit backend   (x11/fb) ?  [x11] '
+	read REPLY
+	if [ ! "$REPLY" = "fb" ]; then
+	    echo 'BACKEND=xraw' >> ${NEW_CF};
+
+	    if   [ -d "/usr/X11" ]; then
+		    X11_PATH=/usr/X11
+	    elif [ -d "/usr/X11R6" ]; then
+		    X11_PATH=/usr/X11R6
+	    elif [ -e "/usr/lib/x86_64-linux-gnu/libX11.so" ]; then
+		    X11_PATH=/usr/lib/x86_64-linux-gnu
+		else
+	        /bin/echo -n 'X11 base path ?              [ ] '
+	        read X11_PATH
+        fi
+        echo 'X11_PATH='$X11_PATH >> ${NEW_CF};
+
+		/bin/echo -n 'Use Cairo graphics  (y/n) ?  [n] '
+		read REPLY
+		if [  "$REPLY" = "y" ]; then
+			echo 'USE_CAIRO=y' >> ${NEW_CF};
+
+			if   [ -d "/usr/local/gnome" ]; then
+				CAIRO_PATH=/usr/local/gnome
+			else
+				/bin/echo -n 'Cairo base path ?            [ ] '
+				read CAIRO_PATH
+			fi
+			echo 'CAIRO_PATH='$CAIRO_PATH >> ${NEW_CF};
+		else
+			echo 'USE_CAIRO=n' >> ${NEW_CF};
+		fi
+	else
+	    echo 'BACKEND=fb' >> ${NEW_CF};
+	fi
+
+
+	if   [ -d $X11_PATH"/share/fonts" ]; then
+		FONT_PATH=$X11_PATH"/share/fonts"
+	elif [ -d "/usr/share/fonts" ]; then
+		FONT_PATH="/usr/share/fonts"
+	elif [ -d $X11_PATH"/lib/X11/fonts" ]; then
+		FONT_PATH=$X11_PATH"/lib/X11/fonts"
+	fi
+	/bin/echo -n 'Font directroy path ?        ['$FONT_PATH'] '
+	read REPLY
+	if [ ! "$REPLY" = "" ]; then
+	    echo 'FONT_PATH='$REPLY >> ${NEW_CF};
+	else
+        echo 'FONT_PATH='$FONT_PATH >> ${NEW_CF};
+	fi
+
+#	echo "";
+	/bin/echo -n 'Distributed Objects (y/n) ?  [y] '
+	read REPLY
+	if [  "$REPLY" = "n" ]; then
+		echo 'BUILD_DO=n' >> ${NEW_CF};
+	else
+		echo 'BUILD_DO=y' >> ${NEW_CF};
+	fi
+
+	CC=${CC:-gcc}
+	COMPILER_NAME=`(basename $CC) 2>/dev/null`
+
+	if [ "$COMPILER_NAME" = "clang" ]; then
+		echo "Compiler is clang"
+		RUNTIME4=y
+	else
+		GCC_VER=`$CC -dumpversion | cut -f1-2 -d.`
+		echo GCC is $GCC_VER
+		NEW_RUN=`echo $GCC_VER \>= 4.7 | bc`
+		if [ "$NEW_RUN" = "1" ]; then
+		  RUNTIME4=y
+		else
+		  RUNTIME4=n
+		fi
+	fi
+
+	/bin/echo -n 'Obj-C 2.0 runtime (y/n) ?    ['$RUNTIME4'] '
+	read REPLY
+	if [ "$REPLY" = "y" ]; then
+		echo 'RUNTIME4=y' >> ${NEW_CF};
+	elif [ "$REPLY" = "n" ]; then
+		echo 'RUNTIME4=n' >> ${NEW_CF};
+	else
+		echo 'RUNTIME4='$RUNTIME4 >> ${NEW_CF};
+	fi
+
+	/bin/echo -n 'Use system freetype (y/n) ?  [y] '
+	read REPLY
+	if [  "$REPLY" = "n" ]; then
+		echo 'USE_SYS_FREETYPE=n' >> ${NEW_CF};
+	else
+		echo 'USE_SYS_FREETYPE=y' >> ${NEW_CF};
+	fi
+
+	echo 'USE_FLT_EPSILON=y' >> ${NEW_CF};
+
+
+	SYS_INC=/usr/include/sys		 # Ubuntu 64: /usr/include/x86_64-linux-gnu
+	if [ ! -d "$SYS_INC" ]; then
+		SYS_INC=`(find /usr/include -path *sys/fcntl.h ) 2>/dev/null`
+		SYS_INC=`(echo $SYS_INC | sed -e "s/fcntl.h//") 2>/dev/null`
+		if [ ! -d "$SYS_INC" ]; then
+			/bin/echo -n 'Platform include/sys path ?  [] '
+			read SYS_INC
+		fi
+	fi
+
+	if [ -f $SYS_INC"/mman.h" ]; then
+		echo 'HAVE_MMAP=y' >> ${NEW_CF};
+	else
+		echo '#HAVE_MMAP=' >> ${NEW_CF};
+	fi
+
+	if [ -f $SYS_INC"/vfs.h" ]; then
+		echo 'HAVE_SYS_VFS_H=y' >> ${NEW_CF};
+	else
+		echo '#HAVE_SYS_VFS_H=' >> ${NEW_CF};
+	fi
+
+	if [ -f $SYS_INC"/statvfs.h" ]; then
+		echo 'HAVE_SYS_STATVFS_H=y' >> ${NEW_CF};
+	else
+		echo '#HAVE_SYS_STATVFS_H=' >> ${NEW_CF};
+	fi
+
+	if [ -f $SYS_INC"/statfs.h" ]; then
+		echo 'HAVE_SYS_STATFS_H=y' >> ${NEW_CF};
+	else
+		echo '#HAVE_SYS_STATFS_H=' >> ${NEW_CF};
+	fi
+
+	if [ -f "/usr/include/pwd.h" ]; then
+		echo 'HAVE_PWD_H=y' >> ${NEW_CF};
+	else
+		echo '#HAVE_PWD_H=' >> ${NEW_CF};
+	fi
+
+	if [ -f "/usr/include/utime.h" ]; then
+		echo 'HAVE_UTIME_H=y' >> ${NEW_CF};
+	else
+		echo '#HAVE_UTIME_H=' >> ${NEW_CF};
+	fi
+
+## PNG
+	PNG_INC=`(find /usr/local/include -name libpng16) 2>/dev/null`
+	if [ -z "$PNG_INC" ]; then
+		PNG_INC=`(find /usr/include -name libpng16) 2>/dev/null`
+	fi
+	if [ "$PNG_INC" = "" ]; then
+		/bin/echo -n 'libpng16 include path ?      [] '
+		read REPLY
+		PNG_INC=$REPLY;
+	fi
+	if [ -d "$PNG_INC" ]; then
+		echo 'PNG_PATH='$PNG_INC    >> ${NEW_CF};
+		echo 'PNG_PLUGIN='"PNG.bproj"  >> ${NEW_CF};
+	fi
+
+## GIF
+	GIF_INC=`(find /usr/local/include -name gif_lib.h) 2>/dev/null`
+	if [ -z "$GIF_INC" ]; then
+		GIF_INC=`(find /usr/include -name gif_lib.h) 2>/dev/null`
+		if [ -z "$GIF_INC" ]; then
+			GIF_INC=`(find /usr -name gif_lib.h) 2>/dev/null`
+		fi
+	fi
+	if [ "$GIF_INC" = "" ]; then
+		/bin/echo -n 'libgif include path ?        [] '
+		read REPLY
+		GIF_INC=$REPLY;
+	fi
+	if [ -f "$GIF_INC" ]; then
+		echo 'GIF_PATH='$GIF_INC    >> ${NEW_CF};
+		echo 'GIF_PLUGIN='"GIF.bproj"  >> ${NEW_CF};
+	fi
+
+## JPG
+	JPG_INC=`(find /usr/local/include -name jpeglib.h) 2>/dev/null`
+	if [ -z "$JPG_INC" ]; then
+		JPG_INC=`(find /usr/include -name jpeglib.h) 2>/dev/null`
+		if [ -z "$JPG_INC" ]; then
+			JPG_INC=`(find /usr -name jpeglib.h) 2>/dev/null`
+		fi
+	fi
+	if [ "$JPG_INC" = "" ]; then
+		/bin/echo -n 'jpeglib.h include path ?     [] '
+		read REPLY
+		JPG_INC=$REPLY;
+	fi
+	if [ -f "$JPG_INC" ]; then
+		echo 'JPG_PATH='$JPG_INC    >> ${NEW_CF};
+		echo 'JPG_PLUGIN='"JPG.bproj"  >> ${NEW_CF};
+	fi
+
+## GZ
+	ZLIB_INC=`(find /usr/local/include -name zlib.h) 2>/dev/null`
+	if [ -z "$ZLIB_INC" ]; then
+		ZLIB_INC=`(find /usr/include -name zlib.h) 2>/dev/null`
+		if [ -z "$ZLIB_INC" ]; then
+			ZLIB_INC=`(find /usr -name zlib.h) 2>/dev/null`
+		fi
+	fi
+	if [ "$ZLIB_INC" = "" ]; then
+		/bin/echo -n 'zlib.h include path ?        [] '
+		read REPLY
+		ZLIB_INC=$REPLY;
+	fi
+	if [ -f "$ZLIB_INC" ]; then
+		echo 'ZLIB_PATH='$ZLIB_INC   >> ${NEW_CF};
+		echo 'GZ_PLUGIN='"GZ.bproj"  >> ${NEW_CF};
+	fi
+
+## OPENAL
+	HAVE_AL='n';
+	AL_INC=`(find /usr/local/include -name al.h) 2>/dev/null`
+	if [ -z "$AL_INC" ]; then
+		AL_INC=`(find /usr/include -name al.h) 2>/dev/null`
+		if [ -z "$AL_INC" ]; then
+			AL_INC=`(find /usr -name al.h) 2>/dev/null`
+		fi
+	fi
+	if [ ! -z "$AL_INC" ]; then
+		HAVE_AL='y';
+	fi
+	/bin/echo -n 'OpenAL support (y/n) ?       ['$HAVE_AL'] '
+	read REPLY
+	if [ ! "$REPLY" = "" ]; then
+	    HAVE_AL=$REPLY;
+	fi
+	echo 'HAVE_OPENAL='$HAVE_AL        >> ${NEW_CF};
+	if [ "$HAVE_AL" = "y" ]; then
+		if [ "$AL_INC" = "" ]; then
+			/bin/echo -n 'al.h include path ?          [] '
+			read REPLY
+			AL_INC=$REPLY;
+		fi
+		AL_PATH=`(echo $AL_INC | sed -e "s/include\/AL\/al.h//") 2>/dev/null`
+		echo 'OPENAL_PATH='$AL_PATH   >> ${NEW_CF};
+		echo 'AL_PLUGIN='"AL.bproj"   >> ${NEW_CF};
+		if [ ! -d "$AL_PATH" ]; then
+			echo 'WARNING: Invalid OPENAL_PATH '$AL_PATH
+		fi
+	fi
+
+## OGG_VORBIS
+	if [ "$HAVE_AL" = "y" ]; then
+		OGG_INC=`(find /usr/local/include -name vorbisfile.h) 2>/dev/null`
+		if [ -z "$OGG_INC" ]; then
+			OGG_INC=`(find /usr/include -name vorbisfile.h) 2>/dev/null`
+			if [ -z "$OGG_INC" ]; then
+				OGG_INC=`(find /usr -name vorbisfile.h) 2>/dev/null`
+			fi
+		fi
+		HAVE_OGG='n';
+		if [ ! -z "$OGG_INC" ]; then
+			HAVE_OGG='y';
+		fi
+		/bin/echo -n 'Ogg/Vorbis support (y/n) ?   ['$HAVE_OGG'] '
+		read REPLY
+		if [ ! "$REPLY" = "" ]; then
+			HAVE_OGG=$REPLY;
+		fi
+		echo 'HAVE_OGG='$HAVE_OGG        >> ${NEW_CF};
+		if [ "$HAVE_OGG" = "y" ]; then
+			if [ "$OGG_INC" = "" ]; then
+				/bin/echo -n 'vorbisfile.h include path ?  [] '
+				read REPLY
+				OGG_INC=$REPLY;
+			fi
+			OGG_PATH=`(echo $OGG_INC | sed -e "s/include\/vorbis\/vorbisfile.h//") 2>/dev/null`
+			echo 'OGG_PATH='$OGG_PATH     >> ${NEW_CF};
+			echo 'OGG_PLUGIN='"OGG.bproj" >> ${NEW_CF};
+			if [ ! -d "$OGG_PATH" ]; then
+				echo 'WARNING: Invalid OGG_PATH '$OGG_PATH
+			fi
+		fi
+	fi
+
+## SSL
+	HAVE_SSL='n';
+	SSL_INC=`(find /usr/local -path *include/openssl) 2>/dev/null`
+	if [ -z "$SSL_INC" ]; then
+		SSL_INC=`(find /usr/include -path *include/openssl) 2>/dev/null`
+		if [ ! -z "$SSL_INC" ]; then
+			SSL_PATH="/usr"
+	    	HAVE_SSL='y';
+		fi
+	else
+		SSL_PATH=`(echo $SSL_INC | sed -e "s/include\/openssl//") 2>/dev/null`
+	    HAVE_SSL='y';
+	fi
+	/bin/echo -n 'OpenSSL support (y/n) ?      ['$HAVE_SSL'] '
+	read REPLY
+	if [ ! "$REPLY" = "" ]; then
+	    HAVE_SSL=$REPLY;
+	fi
+	echo 'HAVE_OPENSSL='$HAVE_SSL        >> ${NEW_CF};
+	if [ "$HAVE_SSL" = "y" ]; then
+		if [ "$SSL_PATH" = "" ]; then
+			/bin/echo -n 'OpenSSL directroy path ?     [] '
+			read REPLY
+			SSL_PATH=$REPLY;
+		fi
+		echo 'OPENSSL_PATH='$SSL_PATH    >> ${NEW_CF};
+		echo 'HTTPS_PLUGIN='"HTTPS.bproj"  >> ${NEW_CF};
+	fi
+
+
+	if [ ! -f ./.patched ]; then
+	    make --version > /dev/null 2>&1 
+	    if [ $? -ne 0 ]; then
+	        echo "GNU make not detected"
+	        /bin/echo -n 'Patch Makefiles for BSD make (y/n) ?    [y] '
+	        read REPLY
+	        if [  "$REPLY" != "n" ]; then
+	            touch ./.patched
+	            patch -p1 < ./Build/obsd.patch
+	        fi
+	    fi
+	fi
+
+
+	echo "##";
+	echo '##  Generating configuration file: (.config)'
+	echo "##";
+
+	mv ${NEW_CF} ${CONFIG}
+

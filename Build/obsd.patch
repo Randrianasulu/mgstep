@@ -1,0 +1,161 @@
+diff -ruN mgstep-2.04008/Build/app.make mgstep-2.04008-p2/Build/app.make
+--- mgstep-2.04008/Build/app.make	Sun Dec 27 20:32:59 2020
++++ mgstep-2.04008-p2/Build/app.make	Sun Dec 27 22:03:23 2020
+@@ -13,7 +13,9 @@
+ #	Set TARGET to the current target and then reinvoke make  
+ #	to perform the app build rule. 
+ #
+-ifeq ($(TARGET),)  ## if TARGET is NULL ##
++#ifeq ($(TARGET),)  ## if TARGET is NULL ##
++.if defined(TARGET)
++.else
+ 
+ all:: $(APPS)	
+ 
+@@ -27,7 +29,7 @@
+ 	$(MAKE) bundles BUNDLES='$($@_BUNDLES)' TARGET='' APPS=''
+ 	$(MAKE) Resources BUNDLE_NAME='$@' BUNDLE_EXT='.app' TARGET=$@
+ 
+-endif              ## endif TARGET is NULL ##
++.endif              ## endif TARGET is NULL ##
+ 
+ 
+ #
+diff -ruN mgstep-2.04008/Build/bundle.make mgstep-2.04008-p2/Build/bundle.make
+--- mgstep-2.04008/Build/bundle.make	Wed Jan 24 22:56:09 2018
++++ mgstep-2.04008-p2/Build/bundle.make	Sun Dec 27 22:03:23 2020
+@@ -18,8 +18,11 @@
+ #	Set TARGET to the current target and then reinvoke make  
+ #	to perform the bundle build rule. 
+ #
+-ifeq ($(TARGET),)   ## if TARGET is NULL ##
+-ifneq ($(BUNDLES),) ## if BUNDLES are defined ##
++#ifeq ($(TARGET),)   ## if TARGET is NULL ##
++#ifneq ($(BUNDLES),) ## if BUNDLES are defined ##
++.if defined(TARGET)
++.else
++.if defined(BUNDLES)
+ 
+ all bundles:: $(BUNDLES)
+ 
+@@ -38,8 +41,8 @@
+ 	  $(MAKE) Resources BUNDLE_EXT='$($(@)_EXTENSION)' TARGET=$@; \
+ 	fi;)
+ 
+-endif             ## endif BUNDLES are defined ##
+-endif             ## endif TARGET is NULL ##
++.endif             ## endif BUNDLES are defined ##
++.endif             ## endif TARGET is NULL ##
+ 
+ #
+ #	Bundle build rule
+diff -ruN mgstep-2.04008/Build/library.make mgstep-2.04008-p2/Build/library.make
+--- mgstep-2.04008/Build/library.make	Sat Mar 24 09:37:53 2018
++++ mgstep-2.04008-p2/Build/library.make	Sun Dec 27 22:03:23 2020
+@@ -19,7 +19,9 @@
+ #	Set TARGET to the current target and then reinvoke make  
+ #	to perform the library build rule. 
+ #
+-ifeq ($(TARGET),)  ## if TARGET is NULL ##
++#ifeq ($(TARGET),)  ## if TARGET is NULL ##
++.if defined(TARGET)
++.else
+ 
+ $(LIBRARY) all::	$(OBJS_DIR)
+ 	@(echo "#")
+@@ -28,7 +30,7 @@
+ 	$(MAKE) $(SHARED_LIB) TARGET='None'
+ 	$(MAKE) $(STATIC_LIB) TARGET='None'
+ 
+-endif             ## endif TARGET is NULL ##
++.endif             ## endif TARGET is NULL ##
+ 
+ #
+ #   Library Build Rule
+diff -ruN mgstep-2.04008/Build/rules.make mgstep-2.04008-p2/Build/rules.make
+--- mgstep-2.04008/Build/rules.make	Sun Dec 27 07:05:28 2020
++++ mgstep-2.04008-p2/Build/rules.make	Sun Dec 27 22:03:23 2020
+@@ -14,11 +14,11 @@
+ include $(TOP)/Build/config.make
+ 
+ 
+-AM_V = @		# Laconic
++#AM_V = @	# Laconic
+ 
+-ifeq ($(V),1)	# Verbose
+-AM_V =
+-endif
++#ifeq ($(V),1)	# Verbose
++#AM_V =
++#endif
+ 
+ #
+ # Suffix Rules
+@@ -60,6 +60,10 @@
+ D_OBJECTS = $($(TARGET)_OBJS) $(OBJS)
+ OBJS_D = $(wildcard $(D_OBJECTS:%.o=$(OBJS_DIR)/%.d))
+ 
+-ifneq ($(OBJS_D),)
++.ifdef $(OBJS_D)
+ -include $(OBJS_D)
+-endif
++.endif
++
++#ifneq ($(OBJS_D),)
++#-include $(OBJS_D)
++#endif
+diff -ruN mgstep-2.04008/Build/subproject.make mgstep-2.04008-p2/Build/subproject.make
+--- mgstep-2.04008/Build/subproject.make	Sun Dec 27 12:46:07 2020
++++ mgstep-2.04008-p2/Build/subproject.make	Sun Dec 27 22:10:38 2020
+@@ -11,7 +11,9 @@
+ #
+ #	If TARGET is NULL this is the first pass thru this file.  
+ #
+-ifeq ($(TARGET),) 		## if TARGET is NULL ##
++#ifeq ($(TARGET),) 		## if TARGET is NULL ##
++.if defined(TARGET)
++.else
+ 
+ #
+ #	Include Makefiles 
+@@ -19,7 +21,8 @@
+ include $(TOP)/Build/rules.make
+ 
+ 
+-ifneq ($(SUBPROJECTS),)	## if SUBPROJECTS are defined ##
++#ifneq ($(SUBPROJECTS),)	## if SUBPROJECTS are defined ##
++.if defined(SUBPROJECTS)
+ 
+ #	If subprojects are defined build them
+ all::	
+@@ -44,5 +47,5 @@
+ 		cd -; \
+ 	done)
+ 
+-endif ## endif SUBPROJECTS are defined ##
+-endif ## endif TARGET is NULL ##
++.endif ## endif SUBPROJECTS are defined ##
++.endif ## endif TARGET is NULL ##
+diff -ruN mgstep-2.04008/Build/tool.make mgstep-2.04008-p2/Build/tool.make
+--- mgstep-2.04008/Build/tool.make	Sun Dec 27 20:48:56 2020
++++ mgstep-2.04008-p2/Build/tool.make	Sun Dec 27 22:03:23 2020
+@@ -18,7 +18,9 @@
+ #	Set TARGET to the current target and then reinvoke make  
+ #	to perform the tool build rule. 
+ #
+-ifeq ($(TARGET),)	## if TARGET is NULL ##
++#ifeq ($(TARGET),)	## if TARGET is NULL ##
++.if defined(TARGET)
++.else
+ 
+ all:: $(TOOLS)
+ 
+@@ -37,7 +39,7 @@
+ 		$(MAKE) $@ TARGET=$@; \
+ 	fi)
+ 
+-endif			## endif TARGET is NULL ##
++.endif			## endif TARGET is NULL ##
+ 
+ #
+ #   Tool build rule

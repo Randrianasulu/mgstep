@@ -1,0 +1,36 @@
+#
+#   AIX
+#
+#   Build mgstep libraries on AIX ppc.
+#
+#	Author:	Felipe A. Rodriguez <far@pcmagic.net>
+#	Date:	January 1999
+#
+CC=/usr/local/bin/gcc
+
+
+LIBS := -lFoundation -lobjc $(LIBS) -lCoreFoundation -lSecurity -lpthread -ldl -lm  $(DO_LIBS) $(SSL_LIBS)
+
+#
+#   Library name and lib build commands 
+#
+SHARED_LIB_SUFFIX = .so
+STATIC_LIB_SUFFIX = .a
+
+# Library names
+SHARED_LIB = $(LIBRARY)$(SHARED_LIB_SUFFIX)
+#STATIC_LIB = $(LIBRARY)$(STATIC_LIB_SUFFIX)
+
+# Library build commands
+BUILD_SHARED_LIB = $(CC) -Xlinker -G -o $(SHARED_LIB)
+#BUILD_STATIC_LIB = $(AR) rc $(STATIC_LIB)
+
+
+
+#CFLAGS := $(CFLAGS) -DNXConstantString=NSConstantString
+#CFLAGS := $(CFLAGS) -fconstant-string-class=NSConstantString
+CFLAGS := $(CFLAGS) $(INC)
+CFLAGS := -g -O2 -fPIC -Wno-import -D_REENTRANT -D_GNU_SOURCE $(CFLAGS)
+LFLAGS := $(LFLAGS) $(LINC)
+BUNDLE_CFLAGS := $(BUNDLE_CFLAGS) -shared $(CFLAGS)
+APP_LIBS := -L/usr/X11R6/lib -lX11 -lXext -lxraw -lappkit -ltiff -lmib $(LIBS) 

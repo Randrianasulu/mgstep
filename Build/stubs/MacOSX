@@ -1,0 +1,46 @@
+#
+#   MacOS X
+#
+#   Build mgstep libraries on MacOS X.
+#
+#	Author:	Nikolaus Schaller <hns@computer.org>
+#	Date:	May 2003
+#
+LIBS := $(LIBS) -framework Foundation
+
+#
+#   Library name and lib build commands 
+#
+SHARED_LIB_SUFFIX = .dylib
+STATIC_LIB_SUFFIX = .a
+
+# Library names
+#SHARED_LIB = $(LIBRARY)$(SHARED_LIB_SUFFIX)
+#STATIC_LIB = $(LIBRARY)$(STATIC_LIB_SUFFIX)
+
+# Library build commands
+BUILD_SHARED_LIB = $(CC) -dynamiclib -flat_namespace -undefined suppress -install_name $(SHARED_LIB) -compatibility_version 8 -current_version 8.0
+#BUILD_STATIC_LIB = $(AR) rc $(STATIC_LIB)
+
+
+LIBS := $(LIBS) $(LIBS_OSX) -framework Security
+CFLAGS := -D_NSCommonWindowMask=15 $(CFLAGS)
+CFLAGS := -g -O2 -fPIC -Wno-import -D_REENTRANT -D_GNU_SOURCE $(CFLAGS)
+CMFLAGS := $(CFLAGS) $(CMFLAGS)
+LFLAGS := $(LFLAGS_OSX) $(CFLAGS)
+BUNDLE_CFLAGS := $(BUNDLE_CFLAGS) $(CFLAGS_OSX) -bundle -framework Cocoa
+APP_LIBS := $(LIBS) -framework Cocoa
+
+#
+#   Disable libs and some tools
+#
+TARGET=$@
+
+ifeq ($(LIBRARY),libmdo)
+OBJS =
+TOOLS =
+endif
+
+ifneq ($(NO_OSX),)
+TOOLS =
+endif

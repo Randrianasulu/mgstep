@@ -1,0 +1,494 @@
+{
+    "Objects" = { 
+        elements = (
+            "Object    2",
+            "Object   11",
+			"Object   31",
+			"Object   55"
+        ); 
+		isa = NSMutableArray;
+	};
+
+    "Object    2" = {
+		className = TestUI;
+		isa = IMCustomObject;
+	};
+ 
+    "Object   11" = {
+        backgroundColor = nil; 
+        backingType = 2; 
+        contentView = "Object   12"; 
+        frame = "{x = 100; y = 100; width = 422; height = 304}"; 
+        frameAutosaveName = nil; 
+        hidesOnDeactivate = NO; 
+        isAutodisplay = YES; 
+        isReleasedWhenClosed = YES; 
+        isVisible = YES; 
+        isa = NSWindow; 
+        level = 0; 
+        maxSize = "{3000, 3000}"; 
+        minSize = "{0, 0}"; 
+        representedFilename = ""; 
+        styleMask = 15; 
+        title = "mib Test Loader Window"; 
+    };
+
+    "Object   12" = {
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 422; height = 304}";
+        frame = "{x = 0; y = 0; width = 422; height = 304}";
+        isa = NSView; 
+        nextResponder = "Object   11"; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        subviews = "Object   13"; 
+        superview = nil; 
+    };
+
+    "Object   13" = {
+        elements = (
+            "Object   14", 
+            "Object   16", 
+            "Object   17", 
+            "Object   18", 
+            "Object   19", 
+            "Object   20", 
+            "Object   21", 
+            "Object   24", 
+            "Object   27", 
+            "Object   31",
+            "UserName"
+        );
+        isa = NSMutableArray; 
+    }; 
+    "Object   14" = {
+        alignment = 2; 
+        alternateImage = nil; 
+        alternateTitle = Alternate; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 114; height = 24}"; 
+        delay = 0.200000; 
+        frame = "{x = 16; y = 148; width = 114; height = 24}"; 
+        highlightsBy = 12; 
+        ignoresMultiClick = NO; 
+        image = nil; 
+        imagePosition = 0; 
+        interval = 0.025000; 
+        isBordered = YES; 
+        isContinuous = NO; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = ""; 
+        nextResponder = "Object   12"; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 0; 
+        state = 0; 
+        subviews = nil; 
+        superview = "Object   12"; 
+        tag = 0; 
+        title = "Momentary Light"; 
+    }; 
+    "Object   16" = {
+        alignment = 2; 
+        alternateImage = nil; 
+        alternateTitle = Alternate; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 114; height = 24}"; 
+        delay = 0.200000; 
+        frame = "{x = 16; y = 232; width = 114; height = 24}"; 
+        highlightsBy = 14; 
+        ignoresMultiClick = NO; 
+        image = nil; 
+        imagePosition = 0; 
+        interval = 0.025000; 
+        isBordered = YES; 
+        isContinuous = NO; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = ""; 
+        nextResponder = "Object   12"; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 0; 
+        state = 0; 
+        subviews = nil; 
+        superview = "Object   12"; 
+        tag = 0; 
+        title = "Momentary Push"; 
+    }; 
+    "Object   17" = {
+        alignment = 2; 
+        alternateImage = nil; 
+        alternateTitle = Alternate; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 114; height = 24}"; 
+        delay = 0.200000; 
+        frame = "{x = 16; y = 190; width = 114; height = 24}"; 
+        highlightsBy = 1; 
+        ignoresMultiClick = NO; 
+        image = nil; 
+        imagePosition = 0; 
+        interval = 0.025000; 
+        isBordered = YES; 
+        isContinuous = NO; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = ""; 
+        nextResponder = "Object   12"; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 0; 
+        state = 0; 
+        subviews = nil; 
+        superview = "Object   12"; 
+        tag = 0; 
+        title = "Momentary change"; 
+    }; 
+    "Object   18" = {
+        alignment = 2; 
+        alternateImage = nil; 
+        alternateTitle = Alternate; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 114; height = 24}"; 
+        delay = 0.200000; 
+        frame = "{x = 17; y = 106; width = 114; height = 24}"; 
+        highlightsBy = 14; 
+        ignoresMultiClick = NO; 
+        image = nil; 
+        imagePosition = 0; 
+        interval = 0.025000; 
+        isBordered = YES; 
+        isContinuous = NO; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = ""; 
+        nextResponder = "Object   12"; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 12; 
+        state = 0; 
+        subviews = nil; 
+        superview = "Object   12"; 
+        tag = 0; 
+        title = PushOn/PushOff; 
+    }; 
+    "Object   19" = {
+        alignment = 2; 
+        alternateImage = nil; 
+        alternateTitle = Alternate; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 114; height = 24}"; 
+        delay = 0.200000; 
+        frame = "{x = 15; y = 64; width = 114; height = 24}"; 
+        highlightsBy = 12; 
+        ignoresMultiClick = NO; 
+        image = nil; 
+        imagePosition = 0; 
+        interval = 0.025000; 
+        isBordered = YES; 
+        isContinuous = NO; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = ""; 
+        nextResponder = "Object   12"; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 12; 
+        state = 0; 
+        subviews = nil; 
+        superview = "Object   12"; 
+        tag = 0; 
+        title = On/Off; 
+    }; 
+    "Object   20" = {
+        alignment = 2; 
+        alternateImage = nil; 
+        alternateTitle = Alternate; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 114; height = 24}"; 
+        delay = 0.200000; 
+        frame = "{x = 16; y = 22; width = 114; height = 24}"; 
+        highlightsBy = 3; 
+        ignoresMultiClick = NO; 
+        image = nil; 
+        imagePosition = 0; 
+        interval = 0.025000; 
+        isBordered = YES; 
+        isContinuous = NO; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = ""; 
+        nextResponder = "Object   12"; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 1; 
+        state = 0; 
+        subviews = nil; 
+        superview = "Object   12"; 
+        tag = 0; 
+        title = Toggle; 
+    }; 
+    "Object   21" = {
+        alignment = 0; 
+        alternateImage = "Object   23"; 
+        alternateTitle = Alternate; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 109; height = 16}";
+        delay = 0.200000; 
+        frame = "{x = 204; y = 216; width = 109; height = 16}";
+        highlightsBy = 3; 
+        ignoresMultiClick = NO; 
+        image = "Object   22"; 
+        imagePosition = 2; 
+        interval = 0.025000; 
+        isBordered = NO; 
+        isContinuous = NO; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = ""; 
+        nextResponder = "Object   12"; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 1; 
+        state = 0; 
+        subviews = nil; 
+        superview = "Object   12"; 
+        tag = 0; 
+        title = Switch; 
+    }; 
+    "Object   22" = {isa = NSImage; name = NSSwitch; size = "{16, 16}"; }; 
+    "Object   23" = {
+        isa = NSImage; 
+        name = NSHighlightedSwitch; 
+        size = "{16, 16}"; 
+    }; 
+    "Object   24" = {
+        alignment = 2; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        backgroundColor = nil; 
+        bounds = "{x = 0; y = 0; width = 132; height = 26}"; 
+        delegate = nil; 
+        drawsBackground = NO; 
+        errorAction = nil; 
+        font = "Object   25"; 
+        frame = "{x = 193; y = 167; width = 132; height = 26}"; 
+        ignoresMultiClick = NO; 
+        isBezeled = NO; 
+        isBordered = YES; 
+        isContinuous = NO; 
+        isEditable = YES; 
+        isEnabled = YES; 
+        isScrollable = YES; 
+        isSelectable = YES; 
+        isa = NSTextField; 
+        nextResponder = "Object   12"; 
+        nextText = "Object   18"; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        previousText = "Object   14"; 
+        stringValue = Title; 
+        subviews = nil; 
+        superview = "Object   12"; 
+        tag = 0; 
+        textColor = nil; 
+    }; 
+    "Object   25" = {isa = NSFont; name = Helvetica; size = 18.000000; }; 
+
+    "UserName" = {
+		autoresizesSubviews = NO;
+		autoresizingMask = 2;
+		drawsBackground = YES;
+		errorAction = nil;
+		isEditable = YES;
+		isa = NSTextField;
+		isSelectable = YES;
+		importsGraphics = NO;
+		allowEditingTextAttributes = NO;
+        font = "Object   25";
+		isBezeled = NO;
+		isBordered = NO;
+		isContinuous = NO;
+		isScrollable = NO;
+		delegate = nil;
+		ignoresMultiClick = NO;
+		isEnabled = YES;
+		alignment = 0;
+		tag = 666;
+		bounds = "{x = 0; y = 0; width = 100; height = 23}";
+		frame = "{x = 193; y = 135; width = 100; height = 23}";
+		postsBoundsChangedNotifications = YES;
+		postsFrameChangedNotifications = YES;
+		showsStateBy = 0;
+		state = 0;
+        placeholderString = Placeholder;
+		subviews = nil;
+		nextResponder = "Object   12";
+		nextText = "Object   27";
+		previousText = nil;
+        superview = "Object   12"; 
+		};
+
+    "Object   27" = {
+        alignment = 2; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        backgroundColor = "Object   29"; 
+        bounds = "{x = 0; y = 0; width = 214; height = 21}"; 
+        delegate = nil; 
+        drawsBackground = YES; 
+        errorAction = nil; 
+        frame = "{x = 172; y = 108; width = 214; height = 21}"; 
+        ignoresMultiClick = NO; 
+        isBezeled = YES; 
+        isBordered = NO; 
+        isContinuous = NO; 
+        isEditable = YES; 
+        isEnabled = YES; 
+        isScrollable = YES; 
+        isSelectable = YES; 
+        isa = NSTextField; 
+        nextResponder = "Object   12"; 
+        nextText = "Object   19"; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        previousText = "Object   18"; 
+        stringValue = Text; 
+        subviews = nil; 
+        superview = "Object   12"; 
+        tag = 0; 
+        textColor = nil; 
+    }; 
+    "Object   29" = {
+        alpha = 1.000000; 
+        blue = 1.000000; 
+        brightness = 1.000000; 
+        colorSpaceName = NSCalibratedRGBColorSpace; 
+        green = 1.000000; 
+        hue = 0.000000; 
+        isa = NSColor; 
+        red = 1.000000; 
+        saturation = 0.000000; 
+    }; 
+    "Object   31" = {
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 20; height = 20}"; 
+        frame = "{x = 300; y = 25; width = 20; height = 20}"; 
+        className = MyView; 
+        isa = MyView; 
+        nextResponder = "Object   11"; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        subviews = nil; 
+        superview = "Object   12"; 
+    }; 
+    "Object   55" = {className = Controller; isa = IMCustomObject; };
+
+    "Connections" = {
+        elements = (
+            "Object   58", 
+            "Object   60", 
+            "Object   62", 
+            "Object   64", 
+            "Object   66", 
+            "Object   67", 
+            "Object   68", 
+            "Object   69", 
+            "Object   70", 
+            "Object   71", 
+            "Object   72"
+        ); 
+        isa = NSMutableArray; 
+    }; 
+    "Object   58" = {
+        destination = "Object    2"; 
+        isa = IMControlConnector; 
+        label = "Object   59"; 
+        source = "Object    2";
+    }; 
+    "Object   59" = {isa = NSString; string = "terminate:"; }; 
+    "Object   60" = {
+        destination = "Object    2"; 
+        isa = IMControlConnector; 
+        label = "Object   61"; 
+        source = "Object    2";
+    }; 
+    "Object   61" = {isa = NSString; string = "hide:"; }; 
+    "Object   62" = {
+        destination = "Object   27"; 
+        isa = IMOutletConnector; 
+        label = "Object   63"; 
+        source = "Object   55"; 
+    }; 
+    "Object   63" = {isa = NSString; string = textField; }; 
+    "Object   64" = {
+        destination = "Object   55"; 
+        isa = IMControlConnector; 
+        label = "Object   65"; 
+        source = "Object   16"; 
+    }; 
+    "Object   65" = {isa = NSString; string = "buttonPressed:"; }; 
+    "Object   66" = {
+        destination = "Object   55"; 
+        isa = IMControlConnector; 
+        label = "Object   65"; 
+        source = "Object   17"; 
+    }; 
+    "Object   67" = {
+        destination = "Object   55"; 
+        isa = IMControlConnector; 
+        label = "Object   65"; 
+        source = "Object   14"; 
+    }; 
+    "Object   68" = {
+        destination = "Object   55"; 
+        isa = IMControlConnector; 
+        label = "Object   65"; 
+        source = "Object   18"; 
+    }; 
+    "Object   69" = {
+        destination = "Object   55"; 
+        isa = IMControlConnector; 
+        label = "Object   65"; 
+        source = "Object   19"; 
+    }; 
+    "Object   70" = {
+        destination = "Object   55"; 
+        isa = IMControlConnector; 
+        label = "Object   65"; 
+        source = "Object   20"; 
+    }; 
+    "Object   71" = {
+        destination = "Object   55"; 
+        isa = IMControlConnector; 
+        label = "Object   65"; 
+        source = "Object   21"; 
+    }; 
+    "Object   72" = {
+        destination = "Object   55"; 
+        isa = IMOutletConnector; 
+        label = "Object   73"; 
+        source = "Object    2"; 
+    }; 
+    "Object   73" = {isa = NSString; string = delegate; }; 
+    RootObject = {Connections="Connections"; Objects="Objects"; isa=GMModel; }; 
+    TopLevelObjects = (RootObject); 
+    Version = 1; 
+}

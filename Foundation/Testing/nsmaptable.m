@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <Foundation/NSMapTable.h>
+#include <Foundation/NSValue.h>
+#include <Foundation/NSString.h>
+#include <Foundation/NSAutoreleasePool.h>
+
+int main ()
+{
+NSMapTable *mt;
+NSMapEnumerator me;
+int i;
+void *k;
+void *v;
+id o;
+NSAutoreleasePool *arp = [NSAutoreleasePool new];
+
+  /* Test with ints */
+
+  mt = NSCreateMapTable (NSIntMapKeyCallBacks,
+			 NSIntMapValueCallBacks,
+			 0);
+
+  for (i = 1; i < 16; i++)
+    NSMapInsert (mt, INT2PTR(i), INT2PTR((i*2)));
+//    NSMapInsert (mt, (void*)i, (void*)(i*2));
+
+  printf ("value for key %d is %d\n", 3, (NSUInteger)NSMapGet (mt, (void*)3));
+  NSMapRemove (mt, (void*)3);
+  printf ("after removing: value for key %d is %d\n",
+	  3, (NSUInteger)NSMapGet (mt, (void*)3));
+
+  me = NSEnumerateMapTable (mt);
+  while (NSNextMapEnumeratorPair (&me, &k, &v))
+    printf ("(%d,%d) ", (NSUInteger)k, (NSUInteger)v);
+  printf ("\n");
+
+  NSFreeMapTable (mt);
+												// Test with NSNumber objects
+	mt = NSCreateMapTable(NSObjectMapKeyCallBacks,NSObjectMapValueCallBacks,0);
+
+	for (i = 0; i < 16; i++)
+	   NSMapInsert(mt,[NSNumber numberWithInt:i],[NSNumber numberWithInt:i*i]);
+
+  o = [NSNumber numberWithInt: 3];
+  printf ("value for key %s is %s\n",
+	  [[o description] cString],
+	  [[(id)NSMapGet (mt, o) description] cString]);
+  NSMapRemove (mt, o);
+  if (NSMapGet (mt, o))
+    printf ("after removing: value for key %s is %s\n",
+	    [[o description] cString],
+	    [[(id)NSMapGet (mt, o) description] cString]);
+  else
+    printf ("after removing: no value for key %s\n",
+	    [[o description] cString]);
+
+  me = NSEnumerateMapTable (mt);
+  while (NSNextMapEnumeratorPair (&me, &k, &v))
+    printf ("(%d,%d) ", [(id)k intValue], [(id)v intValue]);
+  printf ("\n");
+
+  NSFreeMapTable (mt);
+
+  [arp release];
+  printf("nsmaptable test complete\n");
+  exit (0);
+}

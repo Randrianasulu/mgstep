@@ -1,0 +1,224 @@
+#!/bin/sh
+#
+#   Configure mGSTEP
+#
+#	Author:	Felipe A. Rodriguez <far@illumenos.com>
+#	Date:	January 1999
+#
+###############################################################################
+
+CONFIG=".config";
+CONFIG_H="Build/config.h";
+CONFIG_MAKE="Build/config.make";
+VERSION=$1.$2;
+
+
+	if [ -f "${CONFIG}" ]; then
+	    echo 'Detected existing .config file';
+	else
+	    . Build/scripts/config.guess	# Detect or generate .config
+	fi
+
+	. ./${CONFIG}				# include .config
+
+
+#echo "##"; echo "##  Configuring mGSTEP ${VERSION} for ${OS}"; echo "##";
+
+
+	echo '   Build options (.config):'
+	echo ''
+	echo '    BACKEND       = '$BACKEND
+	echo '    X11 DIR       = '$X11_PATH
+	echo '    FONTS DIR     = '$FONT_PATH
+	echo '    SYS FREETYPE  = '$USE_SYS_FREETYPE
+	echo '    OPENSSL DIR   = '$OPENSSL_PATH
+	echo '    OBJC2 RUNTIME = '$RUNTIME4
+	echo '    PLUGINS       = '"${HTTPS_PLUGIN} ${GZ_PLUGIN}"
+	echo '    IMAGE PLUGINS = '"${JPG_PLUGIN} ${GIF_PLUGIN} ${PNG_PLUGIN}"
+	echo '    SOUND PLUGINS = '"${AL_PLUGIN} ${OGG_PLUGIN}"
+	echo ''
+
+
+echo '#ifndef _mGSTEP_H_config' > ${CONFIG_H};
+echo '#define _mGSTEP_H_config' >> ${CONFIG_H};
+echo '' >> "${CONFIG_H}";
+
+	if [ "${OS}" = "Win32" ]; then
+		echo '#include <windows.h>' >> ${CONFIG_H};
+	else
+		echo '#include <unistd.h>' >> ${CONFIG_H};
+	fi
+
+	if [ "${HAVE_MMAP}" = "y" ]; then
+		echo '' >> ${CONFIG_H};
+		echo '#define HAVE_MMAP 1' >> ${CONFIG_H};
+	fi
+	if [ "${HAVE_SYS_VFS_H}" = "y" ]; then
+		echo '#define HAVE_SYS_VFS_H 1' >> ${CONFIG_H};
+	fi
+	if [ "${HAVE_SYS_STATVFS_H}" = "y" ]; then
+		echo '#define HAVE_SYS_STATVFS_H 1' >> ${CONFIG_H};
+	fi
+	if [ "${HAVE_SYS_STATFS_H}" = "y" ]; then
+		echo '#define HAVE_SYS_STATFS_H 1' >> ${CONFIG_H};
+	fi
+	if [ "${HAVE_PWD_H}" = "y" ]; then
+		echo '#define HAVE_PWD_H 1' >> ${CONFIG_H};
+	fi
+	if [ "${HAVE_UTIME_H}" = "y" ]; then
+		echo '#define HAVE_UTIME_H 1' >> ${CONFIG_H};
+	fi
+
+	if [ "${BACKEND}" = "fb" ]; then
+		echo '' >> ${CONFIG_H};
+		echo '#define FB_GRAPHICS 1' >> ${CONFIG_H};
+	fi
+
+	if [ "${RUNTIME4}" = "y" ]; then
+		echo '' >> ${CONFIG_H};
+		echo '#define NEW_RUNTIME 1' >> ${CONFIG_H};
+	fi
+
+	if [ "${USE_FLT_EPSILON}" = "y" ]; then
+		echo '' >> ${CONFIG_H};
+		echo '#define USE_FLT_EPSILON 1' >> ${CONFIG_H};
+	fi
+
+	if [ "${USE_SYS_FREETYPE}" = "y" ]; then
+		echo '' >> ${CONFIG_H};
+		echo '#define USE_SYS_FREETYPE 1' >> ${CONFIG_H};
+	fi
+
+
+echo "OBJS_DIR = obj_"${MACHINE} > ${CONFIG_MAKE};
+
+echo "MAJOR_VERSION = $1" >> ${CONFIG_MAKE};
+echo "MINOR_VERSION = $2" >> ${CONFIG_MAKE};
+echo "MGSTEP_VERSION = ${VERSION}" >> ${CONFIG_MAKE};
+echo "MGSTEP = ${PWD}" >> ${CONFIG_MAKE};
+echo "VPATH = \$(OBJS_DIR)" >> ${CONFIG_MAKE};
+
+echo "INC = \\" >> ${CONFIG_MAKE};
+echo "-I\$(MGSTEP)/AppKit/Headers \\" >> ${CONFIG_MAKE};
+echo "-I\$(MGSTEP)/Foundation/Headers \\" >> ${CONFIG_MAKE};
+echo "-I\$(MGSTEP)" >> ${CONFIG_MAKE};
+
+echo "LINC = \\" >> ${CONFIG_MAKE};
+echo "-L\$(MGSTEP)/Foundation/DO/\$(OBJS_DIR) \\" >> ${CONFIG_MAKE};
+echo "-L\$(MGSTEP)/Foundation/Source/\$(OBJS_DIR) \\" >> ${CONFIG_MAKE};
+echo "-L\$(MGSTEP)/CoreFoundation/\$(OBJS_DIR) \\" >> ${CONFIG_MAKE};
+echo "-L\$(MGSTEP)/Security/\$(OBJS_DIR) \\" >> ${CONFIG_MAKE};
+echo "-L\$(MGSTEP)/CoreText/\$(OBJS_DIR) \\" >> ${CONFIG_MAKE};
+echo "-L\$(MGSTEP)/CoreGraphics/\$(OBJS_DIR) \\" >> ${CONFIG_MAKE};
+echo "-L\$(MGSTEP)/AppKit/Model/\$(OBJS_DIR) \\" >> ${CONFIG_MAKE};
+echo "-L\$(MGSTEP)/AppKit/Source/\$(OBJS_DIR) \\" >> ${CONFIG_MAKE};
+
+echo '' >> ${CONFIG_MAKE};
+
+	echo "# OBJC_FLAGS := -fobjc-arc -fobjc-nonfragile-abi" >> ${CONFIG_MAKE};
+	echo "OBJC_FLAGS := -fconstant-string-class=NSConstantString" >> ${CONFIG_MAKE};
+	echo '' >> ${CONFIG_MAKE};
+
+    echo "#" >> ${CONFIG_MAKE};
+    echo "#    AppKit backend" >> ${CONFIG_MAKE};
+    echo "#" >> ${CONFIG_MAKE};
+    echo "BACKEND = "${BACKEND} >> ${CONFIG_MAKE};
+    echo '' >> ${CONFIG_MAKE};
+
+    echo "FONT_PATH = "${FONT_PATH} >> ${CONFIG_MAKE};
+	if [ "${USE_SYS_FREETYPE}" = "y" ]; then
+        echo "FONT_LIBS := -lfreetype" >> ${CONFIG_MAKE};
+	else
+        echo "PNG_PATH = "${PNG_PATH} >> ${CONFIG_MAKE};
+        echo "FONT_LIBS := -lCoreText" >> ${CONFIG_MAKE};
+        echo 'FT_OBJS_DEF := $(FT_OBJS)' >> ${CONFIG_MAKE};
+        echo 'CFLAGS := $(FT_CFLAGS) -I$(PNG_PATH) -I$(MGSTEP)/CoreText/FreeType/include' >> ${CONFIG_MAKE};
+        echo 'LD_LIBS := $(FT_LIBS)' >> ${CONFIG_MAKE};
+	fi
+    echo '' >> ${CONFIG_MAKE};
+
+    echo "BUILD_DO = "${BUILD_DO} >> ${CONFIG_MAKE};
+    if [ "${BUILD_DO}" = "y" ]; then
+		echo "DO_LIBRARY = libmdo" >> ${CONFIG_MAKE};
+        echo "DO_LIBS = -lmdo -lffi" >> ${CONFIG_MAKE};
+	else
+		echo "DO_LIBRARY = libmdo_disabled" >> ${CONFIG_MAKE};
+		echo "DO_TOOLS = " >> ${CONFIG_MAKE};
+		echo "DO_OBJS =  " >> ${CONFIG_MAKE};
+        echo "DO_LIBS = -lffi" >> ${CONFIG_MAKE};
+    fi
+    echo '' >> ${CONFIG_MAKE};
+
+    if [ ! "${X11_PATH}" = "" ]; then
+        echo "X11_PATH = "${X11_PATH} >> ${CONFIG_MAKE};
+        echo "X11_LIBS := -lX11 -lXext" >> ${CONFIG_MAKE};
+        echo '' >> ${CONFIG_MAKE};
+    fi
+
+    if [ ! "${CAIRO_PATH}" = "" ]; then
+        echo "CAIRO_PATH = "${CAIRO_PATH} >> ${CONFIG_MAKE};
+        echo 'INC := $(INC) -I${CAIRO_PATH}/include' >> ${CONFIG_MAKE};
+        echo 'X11_LIBS := $(X11_LIBS) -L${CAIRO_PATH}/lib -lcairo' >> ${CONFIG_MAKE};
+        echo '' >> ${CONFIG_MAKE};
+    fi
+
+    if [ ! "${OGG_PATH}" = "" ]; then
+        echo "OGG_PATH = "${OGG_PATH} >> ${CONFIG_MAKE};
+        echo 'OGG_LIBS := -L$(OGG_PATH)/lib -logg -lvorbis -lvorbisfile' >> ${CONFIG_MAKE};
+        echo 'OGG_CFLAGS := -I$(OGG_PATH)/include'    >> ${CONFIG_MAKE};
+        echo '' >> ${CONFIG_MAKE};
+    fi
+
+    if [ ! "${OPENAL_PATH}" = "" ]; then
+        echo "OPENAL_PATH = "${OPENAL_PATH} >> ${CONFIG_MAKE};
+        echo 'AL_LIBS := -L$(OPENAL_PATH)/lib -lopenal' >> ${CONFIG_MAKE};
+        echo 'AL_CFLAGS := -I$(OPENAL_PATH)/include'    >> ${CONFIG_MAKE};
+        echo '' >> ${CONFIG_MAKE};
+    fi
+
+    if [ ! "${OPENSSL_PATH}" = "" ]; then
+        echo "OPENSSL_PATH = "${OPENSSL_PATH} >> ${CONFIG_MAKE};
+        echo 'SSL_LIBS := -L$(OPENSSL_PATH)/lib -lcrypto -lssl' >> ${CONFIG_MAKE};
+        echo 'SSL_CFLAGS := -I$(OPENSSL_PATH)/include'          >> ${CONFIG_MAKE};
+        echo '' >> ${CONFIG_MAKE};
+    fi
+
+	echo "FX_PLUGINS = ${HTTPS_PLUGIN} ${GZ_PLUGIN}" >> ${CONFIG_MAKE};
+	echo "IMG_PLUGINS = ${JPG_PLUGIN} ${GIF_PLUGIN} ${PNG_PLUGIN}" >> ${CONFIG_MAKE};
+	echo "SND_PLUGINS = ${AL_PLUGIN} ${OGG_PLUGIN}" >> ${CONFIG_MAKE};
+
+cat Build/stubs/${OS} >> ${CONFIG_MAKE};
+
+echo '' >> ${CONFIG_H};
+echo '#define mGSTEP_VERSION' $1.$2 >> ${CONFIG_H};
+echo '#define mGSTEP_MAJOR_VERSION' $1 >> ${CONFIG_H};
+echo '#define mGSTEP_MINOR_VERSION' $2 >> ${CONFIG_H};
+echo '' >> ${CONFIG_H};
+
+#export $(grep FONT_PATH Build/stubs/${OS})
+
+echo '#define FONT_PREFIX ' $FONT_PATH >> ${CONFIG_H};
+echo '#define X11_BIN_PATH ' "\"$X11_PATH/bin\"" >> ${CONFIG_H};
+echo '' >> ${CONFIG_H};
+
+    if [ "${BUILD_DO}" = "n" ]; then
+		echo '#define DISABLE_DO 1' >> ${CONFIG_H};
+		echo '' >> ${CONFIG_H};
+    fi
+
+    if [ "${HAVE_OPENAL}" = "y" ]; then
+		echo '#define USE_OPENAL 1' >> ${CONFIG_H};
+		echo '' >> ${CONFIG_H};
+    fi
+
+    if [ "${HAVE_OPENSSL}" = "y" ]; then
+		echo '#define ENABLE_OPENSSL 1' >> ${CONFIG_H};
+		echo '' >> ${CONFIG_H};
+    fi
+
+    if [ "${USE_CAIRO}" = "y" ]; then
+		echo '#define CAIRO_GRAPHICS 1' >> ${CONFIG_H};
+		echo '' >> ${CONFIG_H};
+    fi
+
+echo '#endif /* _mGSTEP_H_config */' >> ${CONFIG_H};

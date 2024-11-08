@@ -1,0 +1,64 @@
+//
+// mGSTEP services description file
+//
+{
+	NSServices = (
+				{
+					NSPortName = ExampleServices;
+					NSMessage = openURL;
+					ServicePath = "example.service";
+					IncludeIn = (
+									All
+					);
+					NSSendTypes = (
+									NSStringPboardType
+					);
+					NSMenuItem = {
+									default = "Open URL";
+									English = "Open URL";
+					};
+					NSKeyEquivalent = {
+									default = O;
+									English = O;
+					};
+				},
+				{
+					NSPortName = ExampleServices;
+					NSMessage = tolower;
+					ServicePath = "example.service";
+					NSSendTypes = (
+									NSStringPboardType
+					);
+					NSReturnTypes = (
+									NSStringPboardType
+					);
+					NSMenuItem = {
+									default = "To lower";
+									English = "To lower";
+					};
+					NSKeyEquivalent = {
+									default = L;
+									English = L;
+					};
+				},
+				{
+					NSPortName = ExampleServices;
+					NSMessage = toupper;
+					ServicePath = "example.service";
+					NSSendTypes = (
+									NSStringPboardType
+					);
+					NSReturnTypes = (
+									NSStringPboardType
+					);
+					NSMenuItem = {
+									default = "To upper";
+									English = "To upper";
+					};
+					NSKeyEquivalent = {
+									default = U;
+									English = U;
+					};
+				}
+  );
+}

@@ -1,0 +1,256 @@
+{
+   NSGlobalDomain = {
+        FileTypes = {
+            aac = (
+					/usr/local/bin/mplayer,
+					aac.tiff,
+					"%s"
+					);
+            au = (
+					/usr/local/bin/play,
+					au.tiff,
+					"%s"
+					);
+            avi = (
+					/usr/local/bin/mplayer,
+					avi.tiff,
+					"%s"
+					);
+            bz2 = (
+					Workspace.app,
+					bz2.tiff
+					);
+            c = (
+					Edit,
+					cfile.tiff
+					);
+            cc = (
+					Edit,
+					cpp.tiff
+					);
+            cpp = (
+					Edit,
+					cpp.tiff
+					);
+            flac = (
+					/usr/X11/bin/xterm,
+					au.tiff,
+					"-e mplayer %s"
+					);
+            fli = (
+					/usr/local/bin/xanim,
+					mpg.tiff
+					);
+            gif = (
+					Viewer.app,
+					gif.tiff
+					);
+            gz = (
+					Workspace.app,
+					gz.tiff
+					);
+            h = (
+					Edit,
+					hfile.tiff,
+					"%s"
+					);
+            htm = (
+					"/usr/local/gnome/bin/firefox",
+					html.tiff,
+					);
+            html = (
+					"/usr/local/gnome/bin/firefox",
+					html.tiff,
+					);
+            htmld = (
+					"/usr/local/gnome/bin/firefox",
+					html.tiff,
+					"%s/index.html"
+					);
+            iso = (
+					Workspace.app,
+					iso.tiff
+					);
+            jpeg = (
+					Viewer.app,
+					jpg.tiff
+					);
+            jpg = (
+					Viewer.app,
+					jpg.tiff
+					);
+            m = (
+					Edit,
+					mfile.tiff,
+					"%s"
+					);
+            m2v = (
+					/usr/local/bin/xanim,
+					mpg.tiff,
+					"+Sr %s"
+					);
+            m4a = (
+					/usr/local/bin/mplayer,
+					aac.tiff,
+					"%s"
+					);
+            make = (
+					Edit,
+					make.tiff,
+					"%s"
+					);
+            mk = (
+					Edit,
+					make.tiff,
+					"%s"
+					);
+            mkv = (
+					/usr/local/bin/mplayer,
+					avi.tiff,
+					"%s"
+					);
+            mkr = (
+					Edit,
+					mk.tiff,
+					"%s"
+					);
+            mov = (
+					/usr/local/bin/mplayer,
+					mov.tiff,
+					"%s"
+					);
+            mp3 = (
+	                /usr/X11/bin/xterm,
+					mp3.tiff,
+		            "-e mplayer %s"
+					);
+            mp4 = (
+					/usr/local/bin/mplayer,
+					avi.tiff,
+					"%s"
+					);
+            mpeg = (
+					/usr/local/bin/mplayer,
+					mpg.tiff,
+					"%s"
+					);
+            mpg = (
+					/usr/local/bin/xine,
+					mpg.tiff,
+					"%s"
+					);
+            patch = (
+					Edit,
+					patch.tiff,
+					"%s"
+					);
+            pdf = (
+					/usr/local/gnome/bin/firefox,
+					pdf.tiff,
+					"%s"
+					);
+            pgm = (
+					Viewer.app,
+					pgm.tiff
+					);
+            png = (
+					Viewer.app,
+					png.tiff
+					);
+            pnm = (
+					Viewer.app,
+					ppm.tiff
+					);
+            ppm = (
+					Viewer.app,
+					ppm.tiff
+					);
+            ps = (
+					Edit,
+					ps.tiff
+					);
+            rpm = (
+					Workspace.app,
+					rpm.tiff
+					);
+            rtf = (
+					Edit,
+					rtf.tiff,
+					"%s"
+					);
+            rtfd = (
+					Edit,
+					rtfd.tiff,
+					"%s/TXT.rtf"
+					);
+            snd = (
+	                                /usr/X11/bin/xterm,
+					au.tiff,
+		                        "-e play %s"
+					);
+            tar = (
+					Workspace.app,
+					tar.tiff
+					);
+            tga = (
+					/usr/local/bin/gimp,
+					tga.tiff
+					);
+            tgz = (
+					Workspace.app,
+					tgz.tiff
+					);
+            tif = (
+					Viewer.app,
+					tiff.tiff
+					);
+            tiff = (
+					Viewer.app,
+					tiff.tiff
+					);
+            vmxd = (
+					/usr/X11/bin/xterm,
+					vm.tiff,
+					"-e bash %s/vmx.sh"
+					);
+            vob = (
+					/usr/local/bin/mplayer,
+					avi.tiff,
+					"%s"
+					);
+            wav = (
+					/usr/X11/bin/xterm,
+					wav.tiff,
+					"-e play %s"
+					);
+            wmv = (
+					/usr/local/bin/mplayer,
+					avi.tiff,
+					"%s"
+					);
+            xlsx = (
+					/usr/local/gnome/bin/loffice,
+					xls.tiff
+					);
+            xpm = (
+					/usr/local/bin/gimp,
+					xpm.tiff
+					);
+            xz = (
+					Workspace.app,
+					xz.tiff
+					);
+            zip = (
+					Workspace.app,
+					zip.tiff
+					);
+        };
+    };
+    Workspace = {
+        Divider = 340;
+        Shelf = (
+			"0 0 /",
+			"1 3 /usr/src/mgstep/AppKit/Testing",
+			);
+    };
+}

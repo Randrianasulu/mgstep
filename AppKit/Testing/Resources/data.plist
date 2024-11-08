@@ -1,0 +1,258 @@
+(
+{
+	URL="http://www.stepwise.com/Articles/Editorial/BohemianRhapsody.html";
+	Title="Bohemian Rhapsody";
+	Author="Gary Longsine";
+	ArticleType="AntiBogon";
+	Description="Looking for clues to Rhapsody\'s future?  Take a hint from SETI...";
+	Date="1998-02-08";
+},
+{
+	URL="http://www.stepwise.com/Articles/Editorial/EngineerMarketing.html";
+	Title="Is Apple Marketing Thinking Different?";
+	Author="Jeff Martin";
+	ArticleType="Editorial";
+	Description="Apple Marketing could benefit from their own advice.";
+	Date="1998-02-06";
+},
+{
+	URL="http://www.stepwise.com/Articles/Editorial/GroundhogDay.html";
+	Title="Groundhog Day";
+	Author="Gary Longsine";
+	ArticleType="Editorial";
+	Description="Bill Murray isn\'t the only hero locked in a nightmare.";
+	Date="1998-02-02";
+},
+{
+	URL="http://www.stepwise.com/Articles/DBunker/Jan29-1998.html";
+	Title="From the office of Professor Bunker";
+	Author="Professor Ernst D. Bunker";
+	ArticleType="Humor";
+	Description="Our corporate intelligence analyst stalks the digital links.";
+	Date="1998-01-29";
+},
+{
+	URL="http://www.stepwise.com/Articles/Editorial/MacWorld_SF_98.html";
+	Title="A trip down Rhapsody Row at MacWorld";
+	Author="Malcolm Crawford";
+	ArticleType="Editorial";
+	Description="Malcolm gives us the low-down on the Rhapsody.";
+	Date="1998-01-28";
+},
+{
+	URL="http://www.stepwise.com/Articles/Interviews/ErnieInterview.html";
+	Title="Interview: Dr. Ernest Prabhakar, Apple Rhapsody Product Marketing Manager";
+	Author="Tom McCarthy";
+	ArticleType="Interview";
+	Description="Tom McCarthy chats with Ernie about Apple and Rhapsody.";
+	Date="1998-01-26";
+},
+{
+	URL="http://www.stepwise.com/Articles/Technical/ApplicationStorage.html";
+	Title="Storing your application\'s preferences and support files";
+	Author="Scott Anguish";
+	ArticleType="Technical";
+	Description="A basic introduction to the Rhapsody file hierarchy and the Defaults database.";
+	Date="1998-01-26";
+},
+{
+	URL="http://www.stepwise.com/Articles/Technical/MeetMach.html";
+	Title="Meet Mach";
+	Author="James Scott";
+	ArticleType="Technical";
+	Description="We peel back OPENSTEP\'s skin to reveal a multi-threaded heart of gold.";
+	Date="1997-12-17";
+},
+{
+	URL="http://www.stepwise.com/Articles/Editorial/Salon.html";
+	Title="Salon de Pomme / Mac the Planet!";
+	Author="Gary Longsine";
+	ArticleType="Editorial: Anti-Bogon";
+	Description="A trip to France and a Hackers flashback inspire different thoughts.";
+	Date="1997-12-17";
+},
+{
+	URL="http://www.stepwise.com/Articles/Letters/Letters-Dec/index.html";
+	Title="Letters in December";
+	Author="Scott Anguish";
+	ArticleType="Letters";
+	Description="What happened to Stepwise during November?.";
+	Date="1997-12-10";
+},
+{
+	URL="http://www.stepwise.com/Software/OpenUp/Introduction.html";
+	Title="OpenUp.app - Introduction";
+	Author="Scott Anguish";
+	ArticleType="Technical";
+	Description="Why is there a need for OpenUp.app?.";
+	Date="1997-12-10";
+},
+{
+	URL="http://www.stepwise.com/Software/OpenUp/OpenUp.html";
+	Title="OpenUp.app - Highlights of a Practical Application";
+	Author="Scott Anguish";
+	ArticleType="Technical";
+	Description="Scott outlines some of the design rationalizations.";
+	Date="1997-12-10";
+},
+{
+	URL="http://www.stepwise.com/Articles/Interviews/AndyStone.html";
+	Title="Interview: Andy Stone, Stone Design Corporation";
+	Author="Tom McCarthy";
+	ArticleType="Interview";
+	Description="Stone Design is one of the most prolific OpenStep development companies.";
+	Date="1997-11-12";
+},
+{
+	URL="http://www.stepwise.com/Articles/Technical/InformationPlease/index.html";
+	Title="Information Please";
+	Author="Don Yacktman";
+	ArticleType="Technical: Objectives";
+	Description="Don shows how to add animation to your Info Panels.";
+	Date="1997-11-04";
+},
+{
+	URL="http://www.stepwise.com/Articles/Editorial/melodiousThunk.html";
+	Title="Melodious Thunk";
+	Author="Gary Longsine";
+	ArticleType="Editorial: Anti-bogon";
+	Description="After a long rest, Gary has come back to us with the sound of Rhapsody.";
+	Date="1997-11-03";
+},
+{
+	URL="http://www.stepwise.com/Articles/Interviews/AFS.html";
+	Title="Interview: Anderson Financial Systems";
+	Author="Tom McCarthy";
+	ArticleType="Interview";
+	Description="Tom McCarthy spoke with Greg Anderson, AFS founder and CEO, about their past.";
+	Date="1997-11-03";
+},
+{
+	URL="http://www.stepwise.com/Articles/Technical/TalkToMe.html";
+	Title="Talk To Me";
+	Author="Don Yacktman";
+	ArticleType="Technical: Objectives";
+	Description="Portable Distributed objects is a powerful way.";
+	Date="1997-10-24";
+},
+{
+	URL="http://www.stepwise.com/Articles/RhapsodyRollout/index.html";
+	Title="Rhapsody Developer Rollout News";
+	Author="Scott Anguish";
+	ArticleType="CubeBits";
+	Description="Bits and pieces on Rhapsody that just don\'t fit anywhere else.";
+	Date="1997-10-16";
+},
+{
+	URL="http://www.stepwise.com/Articles/Technical/CategoricallySpeaking.html";
+	Title="Categorically Speaking";
+	Author="Howard Ship";
+	ArticleType="Technical: Objectives";
+	Description="Howard fills in for Don this week with a lesson on Objective-C categories.";
+	Date="1997-10-16";
+},
+{
+	URL="http://www.stepwise.com/Articles/Reviews/PasteUp.html";
+	Title="Review: PasteUp";
+	Author="Thomas McCarthy";
+	ArticleType="Review";
+	Description="PasteUp is the premier page-layout app for NEXTSTEP, and the first page-layout app to ship for Rhapsody.";
+	Date="1997-10-13";
+},
+{
+	URL="http://www.stepwise.com/Articles/Technical/RDR_ReleaseNotes.html";
+	Title="Dissecting the RDR Release Notes";
+	Author="Scott Anguish";
+	ArticleType="Technical";
+	Description="Want to know what programming goodies RDR holds for OpenStep savvy developers?";
+	Date="1997-10-13";
+},
+{
+	URL="http://www.stepwise.com/Articles/Technical/HoldMe.html";
+	Title="Hold Me, Use Me, Free Me";
+	Author="Don Yacktman";
+	ArticleType="Technical: Objectives";
+	Description="Don explains the Foundation Kit memory management technique of Autorelease Pools.";
+	Date="1997-10-04";
+},
+{
+	URL="http://www.stepwise.com/Articles/Interviews/Omnigroup.html";
+	Title="Interview: Omni Development Group";
+	Author="Thomas McCarthy";
+	ArticleType="Interviews";
+	Description="Tom talks to Wil Shipley, President of Omni Development, about the past, the present and the future.";
+	Date="1997-09-30";
+},
+{
+	URL="http://www.stepwise.com/Articles/Technical/BangMeeting.html";
+	Title="Bang, Rhapsody Preview";
+	Author="Scott Anguish";
+	ArticleType="Technical: Overview";
+	Description="An OpenStep developer\'s perspective on the Rhapsody demonstration at the September 24 BANG meeting.";
+	Date="1997-09-26";
+},
+{
+	URL="http://www.stepwise.com/Articles/Interviews/WebStar.html";
+	Title="Interview: StarNine";
+	Author="Patrick Taylor";
+	ArticleType="Interviews";
+	Description="Patrick talks with StarNine about the WebObjects adaptor for WebStar.";
+	Date="1997-09-25";
+},
+{
+	URL="http://www.stepwise.com/Articles/Letters/Letters-Sep/index.html";
+	Title="Letters, we get Letters";
+	Author="Scott Anguish";
+	ArticleType="Letters: September";
+	Description="MacOS GUI vs OpenStep GUI, etc.";
+	Date="1997-09-22";
+},
+{
+	URL="http://www.stepwise.com/Articles/Technical/Services.html";
+	Title="Service Call";
+	Author="Don Yacktman";
+	ArticleType="Technical: Objectives";
+	Description="OPENSTEP\'s Services opens up a new level of inter-application cooperation.";
+	Date="1997-09-12";
+},
+{
+	URL="http://www.stepwise.com/Articles/Technical/Pastries.html";
+	Title="Pastries";
+	Author="Don Yacktman";
+	ArticleType="Technical: Objectives";
+	Description="The OpenStep Pasteboard is much more than <i>just</i> a place to copy and paste items.";
+	Date="1997-09-12";
+},
+{
+	URL="http://www.stepwise.com/Articles/Editorial/RumorControl.html";
+	Title="Rhapsody: Rumor Control";
+	Author="Patrick Taylor";
+	ArticleType="Editorial: Analysis";
+	Description="With all the wild rumors spinning around, its time for a reality check.";
+	Date="1997-09-09";
+},
+{
+	URL="http://www.stepwise.com/Articles/Editorial/TheCloneWars.html";
+	Title="The Clone Wars";
+	Author="Gary Longsine";
+	ArticleType="Editorial: Anti-Bogon";
+	Description="A few days ago, in a city far, far away...";
+	Date="1997-09-06";
+},
+{
+	URL="http://www.stepwise.com/Articles/Workbench/BuildingApache.html";
+	Title="Building Apache on OpenStep";
+	Author="Scott Anguish";
+	ArticleType="Technical: Workbench";
+	Description="Simple to follow instructions for compiling the Apache WWW server on OpenStep 4.2.";
+	Date="1997-09-03";
+},
+{
+	URL="http://www.stepwise.com/Articles/Technical/Bundles.html";
+	Title="Bundle Up for a Warm Reception";
+	Author="Don Yacktman";
+	ArticleType="Technical: Objectives";
+	Description="An overview of what OpenStep\'s dynamic bundle capabilities offer the user and the developer.";
+	Date="1997-08-27";
+}
+)

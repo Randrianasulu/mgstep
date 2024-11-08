@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+#   Package mGSTEP
+#
+#	Author:	Felipe A. Rodriguez <far@illumenos.com>
+#	Date:	January 1999
+#
+# #############################################################################
+
+	echo "##"; echo "## Creating bz2 distribution package"; echo "##"
+
+	ln -s ${PWD} /tmp/${PKG}-${PKG_VERSION}; cd /tmp; \
+	tar cf /tmp/${PKG}-${PKG_VERSION}.tar ${PKG}-${PKG_VERSION}/*; cd -
+	if [ -f /tmp/${PKG}-${PKG_VERSION}.tar.bz2 ]; then \
+		rm /tmp/${PKG}-${PKG_VERSION}.tar.bz2; \
+	fi
+	bzip2 /tmp/${PKG}-${PKG_VERSION}.tar
+	/bin/echo -n "size: ";  du -h /tmp/${PKG}-${PKG_VERSION}.tar.bz2
+	/bin/echo -n "md5:  "; md5sum /tmp/${PKG}-${PKG_VERSION}.tar.bz2
+	if [ -L /tmp/${PKG}-${PKG_VERSION} ]; then \
+		rm /tmp/${PKG}-${PKG_VERSION}; \
+	fi

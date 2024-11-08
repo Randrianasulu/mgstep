@@ -1,0 +1,36 @@
+#
+#   OpenBSD
+#
+#   Build mgstep libraries on OpenBSD 6.6
+#
+#   Author:	Felipe A. Rodriguez <far@illumenos.com>
+#   Date:	January 1999
+#
+LIBS := -lFoundation -lobjc -lCoreFoundation -lpthread -lm -liconv $(DO_LIBS) $(LIBS)
+
+#
+#   Library name and lib build commands 
+#
+SHARED_LIB_SUFFIX = .so
+STATIC_LIB_SUFFIX = .a
+
+# Library names
+SHARED_LIB = $(LIBRARY)$(SHARED_LIB_SUFFIX)
+#STATIC_LIB = $(LIBRARY)$(STATIC_LIB_SUFFIX)
+
+# Library build commands
+BUILD_SHARED_LIB = $(CC) -shared -Wl,-soname,$(SHARED_LIB) -o $(SHARED_LIB)
+#BUILD_STATIC_LIB = $(AR) rc $(STATIC_LIB)
+
+
+CC_CFLAGS := -g -ftrampolines -fno-strict-aliasing -fno-strength-reduce -fPIC -DOpenBSD -D_REENTRANT -D_GNU_SOURCE
+X11_CFLAGS := -I$(X11_PATH)/include
+FT_CFLAGS := -I$(X11_PATH)/include/freetype2 -I$(X11_PATH)/include/freetype2/freetype
+
+CFLAGS := $(CC_CFLAGS) $(CFLAGS) $(INC) $(X11_CFLAGS) $(FT_CFLAGS) -I/usr/local/include $(SSL_CFLAGS)
+CMFLAGS := $(CFLAGS) $(CMFLAGS) -Wno-import $(OBJC_FLAGS)
+BUNDLE_CFLAGS := -shared 
+LFLAGS := $(LFLAGS) $(LINC)
+
+X11_LIBS := -L$(X11_PATH)/lib $(X11_LIBS) 
+APP_LIBS := -lAppKit -lCoreGraphics -ltiff -lmib -L/usr/local/lib $(FONT_LIBS) $(X11_LIBS)

@@ -1,0 +1,531 @@
+//
+//  NSFontPanel mib
+//
+{
+    "Objects" = { 
+		elements = ( "Font_Panel" ); 
+		isa = NSMutableArray; 
+	};
+
+    "Font_Panel" = {
+		isa = IMCustomObject;
+		className = NSFontPanel;
+		realObject = "FontPanel";
+    };
+
+    "FontPanel" = {
+		backingType = 2;
+		contentView = "FontPanelView";
+		frame = "{x = 200; y = 200; width = 400; height = 250}";
+		isVisible = NO;
+		level = 0;
+		isa = NSFontPanel;
+		isAutodisplay = YES;
+		title = "Font Panel";
+		isDocumentEdited = NO;
+		representedFilename = "";
+		isReleasedWhenClosed = NO;
+		delegate = nil;
+		prompt = "Name:";
+		accessoryView = nil;
+		requiredFileType = "";
+		treatsFilePackagesAsDirectories = YES;
+		directory = ".";
+		styleMask = 10; 
+   };
+
+    "FontPanelView" = {
+		autoresizesSubviews = YES;
+		autoresizingMask = 0;
+		bounds = "{x = 0; y = 0; width = 400; height = 250}";
+		frame = "{x = 0; y = 0; width = 400; height = 250}";
+		isa = NSView;
+		nextResponder = "FontPanel";
+		postBoundsChangedNotifications = YES;
+		postFrameChangedNotifications = YES;
+		subviews = "FontPanelSubviews";
+		superview = nil;
+		tag = 0;
+		};
+
+    "FontPanelSubviews" = {
+		elements = (
+				"FontDemo",
+				"CollectionLabel",
+				"FamilyLabel",
+				"FaceLabel",
+				"SizeLabel",
+				"FontSize",
+				"FontSizeSlider",
+				"Browser",
+				"Size");
+		isa = NSMutableArray;
+    };
+
+    "CollectionLabel" = {
+		autoresizesSubviews = NO;
+		autoresizingMask = 4;
+		drawsBackground = NO;
+		errorAction = nil;
+		isEditable = NO;
+		isa = NSTextField;
+		isSelectable = NO;
+		importsGraphics = NO;
+		allowEditingTextAttributes = NO;
+		isBezeled = NO;
+		isBordered = NO;
+		isContinuous = NO;
+		isScrollable = NO;
+		delegate = nil;
+		ignoresMultiClick = NO;
+		isEnabled = NO;
+		alignment = 0;
+		action = nil;
+		target = nil;
+		tag = 0;
+		bounds = "{x = 0; y = 0; width = 90; height = 18}";
+		frame = "{x = 6; y = 125; width = 90; height = 18}";
+		postsBoundsChangedNotifications = YES;
+		postsFrameChangedNotifications = YES;
+		showsStateBy = 0;
+		state = 0;
+		subviews = nil;
+		nextResponder = "FontPanelView";
+		nextText = nil;
+		previousText = nil;
+		superview = "FontPanelView";
+		stringValue = "Collection";
+		};
+
+    "FamilyLabel" = {
+		autoresizesSubviews = NO;
+		autoresizingMask = 1;
+		drawsBackground = NO;
+		errorAction = nil;
+		isEditable = NO;
+		isa = NSTextField;
+		isSelectable = NO;
+		importsGraphics = NO;
+		allowEditingTextAttributes = NO;
+		isBezeled = NO;
+		isBordered = NO;
+		isContinuous = NO;
+		isScrollable = NO;
+		delegate = nil;
+		ignoresMultiClick = NO;
+		isEnabled = NO;
+		alignment = 0;
+		action = nil;
+		target = nil;
+		tag = 0;
+		bounds = "{x = 0; y = 0; width = 90; height = 18}";
+		frame = "{x = 108; y = 125; width = 90; height = 18}";
+		postsBoundsChangedNotifications = YES;
+		postsFrameChangedNotifications = YES;
+		showsStateBy = 0;
+		state = 0;
+		subviews = nil;
+		nextResponder = "FontPanelView";
+		nextText = nil;
+		previousText = nil;
+		superview = "FontPanelView";
+		stringValue = "Family";
+		};
+
+    "FaceLabel" = {
+		autoresizesSubviews = NO;
+		autoresizingMask = 1;
+		drawsBackground = NO;
+		errorAction = nil;
+		isEditable = NO;
+		isa = NSTextField;
+		isSelectable = NO;
+		importsGraphics = NO;
+		allowEditingTextAttributes = NO;
+		isBezeled = NO;
+		isBordered = NO;
+		isContinuous = NO;
+		isScrollable = NO;
+		delegate = nil;
+		ignoresMultiClick = NO;
+		isEnabled = NO;
+		alignment = 0;
+		action = nil;
+		target = nil;
+		tag = 0;
+		bounds = "{x = 0; y = 0; width = 90; height = 18}";
+		frame = "{x = 210; y = 125; width = 90; height = 18}";
+		postsBoundsChangedNotifications = YES;
+		postsFrameChangedNotifications = YES;
+		showsStateBy = 0;
+		state = 0;
+		subviews = nil;
+		nextResponder = "FontPanelView";
+		nextText = nil;
+		previousText = nil;
+		superview = "FontPanelView";
+		stringValue = "Face";
+		};
+
+    "SizeLabel" = {
+		autoresizesSubviews = NO;
+		autoresizingMask = 1;
+		drawsBackground = NO;
+		errorAction = nil;
+		isEditable = NO;
+		isa = NSTextField;
+		isSelectable = NO;
+		importsGraphics = NO;
+		allowEditingTextAttributes = NO;
+		isBezeled = NO;
+		isBordered = NO;
+		isContinuous = NO;
+		isScrollable = NO;
+		delegate = nil;
+		ignoresMultiClick = NO;
+		isEnabled = NO;
+		alignment = 0;
+		action = nil;
+		target = nil;
+		tag = 0;
+		bounds = "{x = 0; y = 0; width = 90; height = 18}";
+		frame = "{x = 312; y = 125; width = 90; height = 18}";
+		postsBoundsChangedNotifications = YES;
+		postsFrameChangedNotifications = YES;
+		showsStateBy = 0;
+		state = 0;
+		subviews = nil;
+		nextResponder = "FontPanelView";
+		nextText = nil;
+		previousText = nil;
+		superview = "FontPanelView";
+		stringValue = "Size";
+		};
+
+    "FontDemo" = {
+		autoresizesSubviews = NO;
+		autoresizingMask = 18;
+		drawsBackground = YES;
+		errorAction = nil;
+		isEditable = NO;
+		isa = NSTextField;
+		isSelectable = NO;
+		importsGraphics = NO;
+		allowEditingTextAttributes = YES;
+		isBezeled = YES;
+		isBordered = YES;
+		isContinuous = NO;
+		isScrollable = NO;
+		delegate = nil;
+		ignoresMultiClick = NO;
+		isEnabled = YES;
+		alignment = 2;
+		action = nil;
+		target = nil;
+		tag = 666;
+		font = "FontObject"; 
+		bounds = "{x = 0; y = 0; width = 400; height = 105}";
+		frame = "{x = 0; y = 145; width = 400; height = 105}";
+		postsBoundsChangedNotifications = YES;
+		postsFrameChangedNotifications = YES;
+		showsStateBy = 0;
+		state = 0;
+		subviews = "FontDemoSubviews";
+		nextResponder = "FontPanelView";
+		nextText = nil;
+		previousText = nil;
+		superview = "FontPanelView";
+		stringValue = "abcdefghijklmnopqrstuvwxyz ABCDEFGHI";
+		};
+
+    "FontObject" = {isa = NSFont; name = Verdana; size = 18.000000; }; 
+
+    "FontDemoSubviews" = {
+		elements = ("FontDescription");
+		isa = NSMutableArray;
+    };
+
+    "FontDescription" = {
+		autoresizesSubviews = NO;
+		autoresizingMask = 2;
+		drawsBackground = YES;
+		errorAction = nil;
+		isEditable = NO;
+		isa = NSTextField;
+		isSelectable = NO;
+		importsGraphics = NO;
+		allowEditingTextAttributes = YES;
+		isBezeled = NO;
+		isBordered = NO;
+		isContinuous = NO;
+		isScrollable = NO;
+		delegate = nil;
+		ignoresMultiClick = NO;
+		isEnabled = YES;
+		alignment = 2;
+		action = nil;
+		target = nil;
+		tag = 666;
+		bounds = "{x = 0; y = 0; width = 392; height = 18}";
+		frame = "{x = 4; y = 4; width = 392; height = 18}";
+		postsBoundsChangedNotifications = YES;
+		postsFrameChangedNotifications = YES;
+		showsStateBy = 0;
+		state = 0;
+		subviews = nil;
+		nextResponder = "FontPanelView";
+		nextText = nil;
+		previousText = nil;
+		superview = "FontDemo";
+		stringValue = "Verdana Regular 10 pt";
+		};
+
+     "FontSize" = {
+		autoresizesSubviews = NO;
+		autoresizingMask = 1;
+		drawsBackground = YES;
+		errorAction = nil;
+		isEditable = YES;
+		isa = NSTextField;
+		isSelectable = YES;
+		importsGraphics = NO;
+		allowEditingTextAttributes = YES;
+		isBezeled = YES;
+		isBordered = YES;
+		isContinuous = NO;
+		isScrollable = NO;
+		delegate = nil;
+		ignoresMultiClick = NO;
+		isEnabled = YES;
+		alignment = 2;
+		action = "_setPanelFont:";
+		target = "FontPanel";
+		tag = 666;
+		bounds = "{x = 0; y = 0; width = 86; height = 20}";
+		frame = "{x = 310; y = 106; width = 86; height = 20}";
+		postsBoundsChangedNotifications = YES;
+		postsFrameChangedNotifications = YES;
+		showsStateBy = 0;
+		state = 0;
+		subviews = nil;
+		nextResponder = "FontPanelView";
+		nextText = nil;
+		previousText = nil;
+		superview = "FontPanelView";
+		stringValue = "12";
+		};
+
+     "FontSizeSlider" = {
+		autoresizesSubviews = NO;
+		autoresizingMask = 1;
+		drawsBackground = YES;
+		isBezeled = YES;
+		errorAction = nil;
+		isa = NSSlider;
+		delegate = nil;
+		action = "_setPanelFontSize:";
+		target = "FontPanel";
+		tag = 666;
+		bounds = "{x = 0; y = 0; width = 18; height = 100}";
+		frame = "{x = 370; y = 4; width = 18; height = 100}";
+		postsBoundsChangedNotifications = YES;
+		postsFrameChangedNotifications = YES;
+		subviews = nil;
+		nextResponder = "FontPanelView";
+		superview = "FontPanelView";
+		};
+
+    "Browser" = {
+		title = "Column 0";
+		pathSeparator = "/";
+		target = "FontPanel";
+		delegate = "FontPanel";
+		maxVisibleColumns = 3;
+		minColumnWidth = 60;
+		separatesColumns = NO;
+		isTitled = NO;
+		autohidesScroller = NO;
+		hasHorizontalScroller = NO;
+		allowsMultipleSelection = NO;
+		allowsEmptySelection = YES;
+		autoresizesSubviews = YES;
+		autoresizingMask = 2;
+		doubleAction = "ok:"; 
+		bounds = "{x = 0; y = 0; width = 305; height = 125}";
+		frame = "{x = 2; y = 2; width = 305; height = 125}";
+		isa = _NSFontBrowser;
+		subviews = nil;
+		nextResponder = "FontPanelView";
+		superview = "FontPanelView";
+		};
+
+    "Size" = {
+		autoresizesSubviews = NO;
+		autoresizingMask = 1;
+		drawsBackground = YES;
+		errorAction = nil;
+        documentView = "Object   18";
+		isa = NSScrollView;
+		borderType = 2;
+		hasVerticalScroller = YES;
+		delegate = nil;
+		ignoresMultiClick = NO;
+		isEnabled = YES;
+		alignment = 0;
+		action = nil;
+		target = nil;
+		tag = 666;
+		bounds = "{x = 0; y = 0; width = 50; height = 100}";
+		frame = "{x = 310; y = 4; width = 50; height = 100}";
+		postsBoundsChangedNotifications = YES;
+		postsFrameChangedNotifications = YES;
+		nextResponder = "FontPanelView";
+        subviews = nil;
+		superview = "FontPanelView";
+		};
+
+    "Object   18" = {
+        action = nil; 
+        allowsEmptySelection = NO; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 1;
+        autosizesCells = YES;
+        backgroundColor = nil; 
+        bounds = "{x = 0; y = 0; width = 40; height = 34}";
+        cell = nil; 
+        cellBackgroundColor = nil; 
+        cellClass = NSBrowserCell;
+        cellSize = "{width = 46; height = 15}";
+        cells = "Object   24"; 
+        delegate = nil; 
+        doubleAction = nil; 
+        drawsBackground = YES; 
+        drawsCellBackground = NO;
+        errorAction = nil; 
+        frame = "{x = 2; y = 2; width = 40; height = 70}";
+        ignoresMultiClick = NO; 
+        intercellSpacing = "{width = 0; height = 4}"; 
+        isAutoscroll = YES;
+        isEnabled = YES; 
+        isSelectionByRect = NO;
+        isa = NSMatrix; 
+        mode = 0; 
+        nextResponder = "Size";
+        numberOfColumns = 1; 
+        numberOfRows = 2;
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        prototype = nil;
+        subviews = nil; 
+        superview = nil;
+        tag = 0; 
+        target = nil; 
+    }; 
+    "Object   24" = {elements = ("Object   25", "Object   26"); isa = NSMutableArray; }; 
+    "Object   25" = {
+        action = nil; 
+        alignment = 0; 
+        alternateImage = nil;
+        alternateTitle = ""; 
+        delay = 0.200000; 
+        highlightsBy = 1;
+        image = nil;
+        imagePosition = 0;
+        interval = 0.025000; 
+        isBezeled = NO; 
+        isBordered = NO; 
+        isContinuous = NO; 
+        isEditable = NO; 
+        isEnabled = YES; 
+        isScrollable = NO; 
+        isSelectable = NO; 
+        isTransparent = NO; 
+        isa = NSBrowserCell;
+        keyEquivalent = ""; 
+        keyEquivalentFont = nil; 
+        keyEquivalentModifierMask = 0; 
+        sendActionMask = 0; 
+        showsStateBy = 1; 
+        state = 1; 
+        stringValue = 9;
+        tag = 1005; 
+        target = nil; 
+        type = 1; 
+        wraps = YES; 
+    }; 
+    "Object   26" = {
+        action = nil; 
+        alignment = 0; 
+        alternateImage = nil;
+        alternateTitle = "";
+        delay = 0.200000; 
+        highlightsBy = 1; 
+        image = nil;
+        imagePosition = 0;
+        interval = 0.025000; 
+        isBezeled = NO; 
+        isBordered = NO; 
+        isContinuous = NO; 
+        isEditable = NO; 
+        isEnabled = YES; 
+        isScrollable = NO; 
+        isSelectable = NO; 
+        isTransparent = NO; 
+        isa = NSBrowserCell;
+        keyEquivalent = ""; 
+        keyEquivalentFont = nil; 
+        keyEquivalentModifierMask = 0; 
+        sendActionMask = 0; 
+        showsStateBy = 1; 
+        state = 0; 
+        stringValue = 10;
+        tag = 1006; 
+        target = nil; 
+        type = 1; 
+        wraps = YES; 
+    }; 
+
+    "Connections" = { 
+		elements = ("Object   55",
+			    "Object   27",
+			    "Object   57",
+			    "Object   59"); 
+		isa = NSMutableArray;
+    };
+
+    "Object   28" = {isa = NSString; string = _fontSizes; };
+    "Object   27" = {
+        destination = "Object   18";
+        isa = IMOutletConnector; 
+        label = "Object   28";
+        source = "FontPanel"; 
+    }; 
+
+    "Object   54" = {isa = NSString; string = _fontDemo; };
+    "Object   55" = {
+        destination = "FontDemo"; 
+        isa = IMOutletConnector; 
+        label = "Object   54"; 
+        source = "FontPanel"; 
+    };
+
+    "Object   56" = {isa = NSString; string = _fontDescription; }; 
+    "Object   57" = {
+        destination = "FontDescription"; 
+        isa = IMOutletConnector; 
+        label = "Object   56"; 
+        source = "FontPanel"; 
+    }; 
+
+    "Object   58" = {isa = NSString; string = _fontSize; }; 
+    "Object   59" = {
+        destination = "FontSize"; 
+        isa = IMOutletConnector; 
+        label = "Object   58"; 
+        source = "FontPanel"; 
+    }; 
+
+    RootObject = {Connections="Connections"; Objects="Objects"; isa=GMModel; }; 
+    TopLevelObjects = (RootObject);
+    Version = 1;
+};

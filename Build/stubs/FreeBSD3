@@ -1,0 +1,36 @@
+#
+#   FreeBSD
+#
+#   Build mgstep libraries on FreeBSD 3.2 / i386.
+#
+#	Author:	Tim Bissell
+#	Date:	July 1999
+#
+CC=gcc
+
+LIBS := $(LIBS) -lfoundation -lobjc -lm -lXext
+
+#
+#   Library name and lib build commands 
+#
+SHARED_LIB_SUFFIX = .so
+STATIC_LIB_SUFFIX = .a
+
+# Library names
+SHARED_LIB = $(LIBRARY)$(SHARED_LIB_SUFFIX)
+#STATIC_LIB = $(LIBRARY)$(STATIC_LIB_SUFFIX)
+
+# Library build commands
+BUILD_SHARED_LIB = $(CC) -shared -Wl,-soname,$(SHARED_LIB) -o $(SHARED_LIB)
+#BUILD_STATIC_LIB = $(AR) rc $(STATIC_LIB)
+
+
+CMFLAGS := -Wno-import
+CC_CFLAGS := -g -O2 -fPIC -DFreeBSD_i386
+X11_CFLAGS := -I$(X11_PATH)/include
+FT_CFLAGS := -I/usr/include/freetype2 -I/usr/include/freetype2/freetype
+
+CFLAGS := $(CC_CFLAGS) $(CMFLAGS) $(CFLAGS) $(INC) $(X11_CFLAGS) $(FT_CFLAGS)
+LFLAGS := $(LFLAGS) $(LINC)
+BUNDLE_CFLAGS := $(BUNDLE_CFLAGS) -shared $(CFLAGS)
+APP_LIBS := -L/usr/X11R6/lib -lX11 -lXext -lxraw -lappkit -ltiff -lmib $(LIBS) 

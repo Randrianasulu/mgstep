@@ -1,0 +1,494 @@
+//
+//  FindPanel mib
+//
+{
+    "Objects" = {
+        elements = (
+            "Object    2", 
+            "FindPanel"
+        ); 
+		isa = NSMutableArray;
+	};
+
+    "Object    2" = {
+		className = EditUI;
+		isa = IMCustomObject;
+	};
+ 
+    FindPanel = {
+        backgroundColor = nil; 
+        backingType = 2; 
+        becomesKeyOnlyIfNeeded = NO; 
+        frame = "{x = 87; y = 156; width = 389; height = 120}";
+        contentView = PanelContentView; 
+        frameAutosaveName = nil; 
+        hidesOnDeactivate = YES; 
+        isAutodisplay = YES; 
+        isFloatingPanel = NO; 
+        isReleasedWhenClosed = NO; 
+        isVisible = YES; 
+        isa = NSPanel; 
+        level = 0; 
+        maxSize = "{width = 999; height = 999}"; 
+        minSize = "{width = 0; height = 0}"; 
+        representedFilename = ""; 
+        styleMask = 3; 
+        title = Find; 
+        worksWhenModal = NO; 
+    };
+
+    PanelContentView = {
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 389; height = 120}";
+        frame = "{x = 0; y = 0; width = 389; height = 120}";
+        isa = NSView; 
+        nextResponder = FindPanel; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        subviews = "Object   13"; 
+        superview = nil; 
+    };
+
+    "Object   13" = {
+        elements = (
+            "Object   21",
+            "Object   24",
+            "Object   28",
+            "Object   29", 
+            "Object   33", 
+            "Object   35", 
+            "Object   37", 
+            "Object   39", 
+            "Object   41", 
+            "Object   54"
+        ); 
+        isa = NSMutableArray; 
+    };
+
+    "Object   21" = {
+        alignment = 0; 
+        alternateImage = "Object   23"; 
+        alternateTitle = "Wrap Around";
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 109; height = 16}";
+        delay = 0.200000; 
+        frame = "{x = 224; y = 40; width = 109; height = 16}";
+        highlightsBy = 3; 
+        ignoresMultiClick = NO; 
+        image = "Object   22"; 
+        imagePosition = 2; 
+        interval = 0.025000; 
+        isBordered = NO; 
+        isContinuous = NO; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = ""; 
+        nextResponder = PanelContentView;
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 1; 
+        state = 1;
+        subviews = nil; 
+        superview = PanelContentView;
+        tag = 0; 
+        title = "Wrap Around";
+    }; 
+    "Object   22" = {isa = NSImage; name = NSSwitch; size = "{16, 16}"; }; 
+    "Object   23" = {
+        isa = NSImage; 
+        name = NSHighlightedSwitch; 
+        size = "{16, 16}"; 
+    }; 
+
+    "Object   24" = {
+        alignment = 0; 
+        alternateImage = "Object   23"; 
+        alternateTitle = "Ignore Case";
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 109; height = 16}";
+        delay = 0.200000; 
+        frame = "{x = 110; y = 40; width = 109; height = 16}";
+        highlightsBy = 3; 
+        ignoresMultiClick = NO; 
+        image = "Object   22"; 
+        imagePosition = 2; 
+        interval = 0.025000; 
+        isBordered = NO; 
+        isContinuous = NO; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = ""; 
+        nextResponder = PanelContentView;
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 1; 
+        state = 0; 
+        subviews = nil; 
+        superview = PanelContentView;
+        tag = 0; 
+        title = "Ignore Case";
+    }; 
+
+    "Object   28" = {
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        backgroundColor = nil; 
+        bounds = "{x = 0; y = 0; width = 300; height = 22}"; 
+        frame = "{x = 80; y = 90; width = 300; height = 22}";
+        delegate = nil; 
+        drawsBackground = YES; 
+        errorAction = nil; 
+        ignoresMultiClick = NO; 
+        isBezeled = YES; 
+        isBordered = YES; 
+        isEditable = YES; 
+        isEnabled = YES; 
+        isScrollable = NO; 
+        isSelectable = YES; 
+        isa = NSTextField; 
+        nextResponder = PanelContentView; 
+        nextText = nil; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        previousText = nil; 
+        stringValue = ""; 
+        subviews = nil; 
+        superview = PanelContentView; 
+        tag = 0; 
+        textColor = nil; 
+    };
+
+    "Object   29" = {
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        backgroundColor = nil; 
+        bounds = "{x = 0; y = 0; width = 300; height = 22}"; 
+        frame = "{x = 80; y = 64; width = 300; height = 22}";
+        delegate = nil; 
+        drawsBackground = YES; 
+        errorAction = nil; 
+        ignoresMultiClick = NO; 
+        isBezeled = YES; 
+        isBordered = YES; 
+        isEditable = YES; 
+        isEnabled = YES; 
+        isScrollable = NO; 
+        isSelectable = YES; 
+        isa = NSTextField; 
+        nextResponder = PanelContentView; 
+        nextText = nil; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        previousText = nil; 
+        stringValue = ""; 
+        subviews = nil; 
+        superview = PanelContentView; 
+        tag = 0; 
+        textColor = nil; 
+    };
+
+    "Object   33" = {
+        alternateImage = nil; 
+        alternateTitle = ""; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 59; height = 24}"; 
+        delay = 0.200000; 
+        frame = "{x = 320; y = 8; width = 59; height = 24}"; 
+        highlightsBy = 14; 
+        ignoresMultiClick = NO; 
+        image = nil; 
+        imagePosition = 0; 
+        interval = 0.025000; 
+        isBordered = YES; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = "";
+        nextResponder = PanelContentView; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 0; 
+        state = 0; 
+        subviews = nil; 
+        superview = PanelContentView; 
+        tag = 0; 
+        title = Next; 
+    };
+
+    "Object   35" = {
+        alternateImage = nil; 
+        alternateTitle = ""; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 58; height = 24}"; 
+        delay = 0.200000; 
+        frame = "{x = 90; y = 8; width = 58; height = 24}"; 
+        highlightsBy = 14; 
+        ignoresMultiClick = NO; 
+        image = nil; 
+        imagePosition = 0; 
+        interval = 0.025000; 
+        isBordered = YES; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = ""; 
+        nextResponder = PanelContentView; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 0; 
+        state = 0; 
+        subviews = nil; 
+        superview = PanelContentView; 
+        tag = 0; 
+        title = Replace; 
+    }; 
+    "Object   37" = {
+        alternateImage = nil; 
+        alternateTitle = ""; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 99; height = 24}"; 
+        delay = 0.200000; 
+        frame = "{x = 152; y = 8; width = 99; height = 24}"; 
+        highlightsBy = 14; 
+        ignoresMultiClick = NO; 
+        image = nil; 
+        imagePosition = 0; 
+        interval = 0.025000; 
+        isBordered = YES; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = ""; 
+        nextResponder = PanelContentView; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 0; 
+        state = 0; 
+        subviews = nil; 
+        superview = PanelContentView; 
+        tag = 0; 
+        title = "Replace & Find"; 
+    }; 
+    "Object   39" = {
+        alternateImage = nil; 
+        alternateTitle = ""; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 76; height = 24}"; 
+        delay = 0.200000; 
+        frame = "{x = 10; y = 8; width = 76; height = 24}"; 
+        highlightsBy = 14; 
+        ignoresMultiClick = NO; 
+        image = nil; 
+        imagePosition = 0; 
+        interval = 0.025000; 
+        isBordered = YES; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = ""; 
+        nextResponder = PanelContentView; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 0; 
+        state = 0; 
+        subviews = nil; 
+        superview = PanelContentView; 
+        tag = 0; 
+        title = "Replace All"; 
+    };
+ 
+    "Object   41" = {
+        alternateImage = nil; 
+        alternateTitle = ""; 
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        bounds = "{x = 0; y = 0; width = 61; height = 24}"; 
+        delay = 0.200000; 
+        frame = "{x = 255; y = 8; width = 61; height = 24}"; 
+        highlightsBy = 14; 
+        ignoresMultiClick = NO; 
+        image = nil; 
+        imagePosition = 0; 
+        interval = 0.025000; 
+        isBordered = YES; 
+        isEnabled = YES; 
+        isTransparent = NO; 
+        isa = NSButton; 
+        keyEquivalent = ""; 
+        nextResponder = PanelContentView; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        showsStateBy = 0; 
+        state = 0; 
+        subviews = nil; 
+        superview = PanelContentView; 
+        tag = 0; 
+        title = Previous; 
+    };
+
+    "Object   54" = {
+        autoresizesSubviews = NO; 
+        autoresizingMask = 0; 
+        backgroundColor = nil; 
+        bounds = "{x = 0; y = 0; width = 85; height = 30}"; 
+        frame = "{x = 0; y = 53; width = 85; height = 30}"; 
+		delegate = nil; 
+        drawsBackground = NO; 
+        errorAction = nil; 
+        ignoresMultiClick = NO; 
+        isBezeled = NO; 
+        isBordered = NO; 
+        isEditable = NO; 
+        isEnabled = YES; 
+        isScrollable = NO; 
+        isSelectable = NO; 
+        isa = NSTextField; 
+        nextResponder = PanelContentView; 
+        nextText = nil; 
+        postsBoundsChangedNotifications = YES; 
+        postsFrameChangedNotifications = YES; 
+        previousText = nil; 
+        stringValue = ""; 
+        subviews = nil; 
+        superview = PanelContentView; 
+        tag = 0; 
+        textColor = nil; 
+    }; 
+    "Connections" = {
+        elements = (
+            "Object   58", 
+            "Object   60",
+            "Object   63",
+            "Object   65", 
+            "Object   67",
+            "Object   70",
+            "Object   72",
+            "Object   74",
+            "Object   76",
+            "Object   81",
+            "Object   83", 
+            "Object   85", 
+            "Object   93",
+            "Object   95", 
+            "Object   97"
+        ); 
+        isa = NSMutableArray; 
+    }; 
+    "Object   58" = {
+        destination = "Object   33"; 
+        isa = IMOutletConnector; 
+        label = "Object   59"; 
+        source = "Object    2"; 
+    }; 
+    "Object   59" = {isa = NSString; string = _findNextButton; };
+    "Object   60" = {
+        destination = "Object   39";
+        isa = IMOutletConnector; 
+        label = "Object   61";
+        source = "Object    2"; 
+    }; 
+    "Object   61" = {isa = NSString; string = _replaceAllButton; };
+    "Object   63" = {
+        destination = "Object   28"; 
+        isa = IMOutletConnector; 
+        label = "Object   64"; 
+        source = "Object    2"; 
+    }; 
+    "Object   64" = {isa = NSString; string = _findTextField; };
+    "Object   65" = {
+        destination = "Object   29"; 
+        isa = IMOutletConnector; 
+        label = "Object   66"; 
+        source = "Object    2"; 
+    }; 
+    "Object   66" = {isa = NSString; string = _replaceTextField; };
+    "Object   67" = {
+        destination = "Object   24";
+        isa = IMOutletConnector; 
+        label = "Object   68";
+        source = "Object    2"; 
+    }; 
+    "Object   68" = {isa = NSString; string = _ignoreCaseButton; };
+    "Object   70" = {
+        destination = "Object   35";
+        isa = IMOutletConnector; 
+        label = "Object   71";
+        source = "Object    2"; 
+    }; 
+    "Object   71" = {isa = NSString; string = _replaceFindButton; };
+    "Object   72" = {
+        destination = "Object   37";
+        isa = IMOutletConnector; 
+        label = "Object   73";
+        source = "Object    2"; 
+    }; 
+    "Object   73" = {isa = NSString; string = _replaceButton; };
+    "Object   74" = {
+        destination = "Object   54";
+        isa = IMOutletConnector; 
+        label = "Object   75";
+        source = "Object    2"; 
+    }; 
+    "Object   75" = {isa = NSString; string = _statusField; };
+    "Object   76" = {
+        destination = "Object   21";
+        isa = IMOutletConnector; 
+        label = "Object   77";
+        source = "Object    2"; 
+    }; 
+    "Object   77" = {isa = NSString; string = _wrapAroundButton; };
+    "Object   81" = {
+        destination = nil; 
+        isa = IMControlConnector; 
+        label = "Object   82"; 
+        source = "Object   41"; 
+    }; 
+    "Object   82" = {isa = NSString; string = "findPrevious:"; }; 
+    "Object   83" = {
+        destination = nil; 
+        isa = IMControlConnector; 
+        label = "Object   84"; 
+        source = "Object   37"; 
+    }; 
+    "Object   84" = {isa = NSString; string = "replaceAndFind:"; }; 
+    "Object   85" = {
+        destination = nil; 
+        isa = IMControlConnector; 
+        label = "Object   86"; 
+        source = "Object   35"; 
+    }; 
+    "Object   86" = {isa = NSString; string = "replace:"; }; 
+    "Object   93" = {
+        destination = "Object    2"; 
+        isa = IMControlConnector; 
+        label = "Object   94"; 
+        source = "Object   28"; 
+    }; 
+    "Object   94" = {isa = NSString; string = "findReturn:"; }; 
+    "Object   95" = {
+        destination = nil; 
+        isa = IMControlConnector; 
+        label = "Object   96"; 
+        source = "Object   33"; 
+    }; 
+    "Object   96" = {isa = NSString; string = "findNext:"; }; 
+    "Object   97" = {
+        destination = "Object    2"; 
+        isa = IMOutletConnector; 
+        label = "Object   98"; 
+        source = FindPanel; 
+    }; 
+    "Object   98" = {isa = NSString; string = delegate; }; 
+    RootObject = {Connections="Connections"; Objects="Objects"; isa=GMModel; }; 
+    TopLevelObjects = (RootObject); 
+    Version = 1; 
+}

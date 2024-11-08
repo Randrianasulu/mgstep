@@ -1,0 +1,51 @@
+#
+#   ARM-Linux
+#
+#   Build mgstep libraries on Linux ARM  (Zaurus tools).
+#
+#	Author:	H. Nikolaus Schaller <hns@computer.org>
+#	Date:	May 2003
+#
+TOOLCHAIN := /Developer/Zaurus-X-gcc/opt/Embedix/tools/arm-linux/bin
+CC := $(TOOLCHAIN)/gcc
+LS := $(TOOLCHAIN)/ld
+AS := $(TOOLCHAIN)/as
+STRIP := $(TOOLCHAIN)/strip
+
+LIBS := $(LIBS) -lFoundation -lmdo -lm -ldl -lpthread -lobjc
+
+#
+#   Library name and lib build commands 
+#
+SHARED_LIB_SUFFIX = .so
+STATIC_LIB_SUFFIX = .a
+
+# Library names
+SHARED_LIB = $(LIBRARY)$(SHARED_LIB_SUFFIX)
+#STATIC_LIB = $(LIBRARY)$(STATIC_LIB_SUFFIX)
+
+# Library build commands
+BUILD_SHARED_LIB = $(CC) -shared -Wl,-soname,$(SHARED_LIB) -o $(SHARED_LIB)
+#BUILD_STATIC_LIB = $(AR) rc $(STATIC_LIB)
+
+
+CFLAGS := $(CFLAGS) $(INC)
+CFLAGS := -g -O2 -fPIC -Wno-import -D_REENTRANT -D_GNU_SOURCE $(CFLAGS)
+
+# optimize for size, no debugging (no -g or -gstabs), enable/disable some warnings
+ 
+CFLAGS := $(CFLAGS) -Os -Q \
+			-DLinux_ARM -DUSE_BITFIELDS=0 \
+			-Wall -Wno-shadow -Wno-missing-braces -Wpointer-arith \
+			-I/Developer/Zaurus-X-gcc/opt/Embedix/tools/arm-linux/include \
+			-I/Developer/Zaurus-X-gcc/opt/Embedix/tools/arm-linux/usr/include \
+			-I/Developer/Zaurus-X-gcc/opt/Embedix/tools/lib/gcc-lib/arm-linux/2.95.3/include \
+			-I/Developer/Zaurus-X-gcc/opt/Embedix/tools/arm-linux/usr/mySTEP/include \
+			-I/usr/X11R6/include
+
+LFLAGS := $(LFLAGS) $(LINC)
+BUNDLE_CFLAGS := $(BUNDLE_CFLAGS) -shared $(CFLAGS)
+APP_LIBS := -L/Developer/Zaurus-X-gcc/opt/Embedix/tools/arm-linux/usr/lib \
+	-L/Developer/Zaurus-X-gcc/opt/Embedix/tools/arm-linux/usr/X11R6/lib \
+	-lX11 -lXext -lXraw -lAppKit -lcg -ltiff -lMib \
+	 $(LIBS) 
